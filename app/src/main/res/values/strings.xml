@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- frame_461 strings -->
+
+	<string name="app_name">Page 1</string>
+	<string name="ek_img_content">ExportKit Image</string>
+	<string name="or_connect_with_string">or connect with</string>
+	<string name="login_string">Login</string>
+	<string name="register_string">Register</string>
+	<string name="welcome_string">Welcome</string>
+	<string name="by_signing_in_you_are_agreeing_our_term_and_privacy_policy_string">By signing in you are agreeing our Term and privacy policy</string>
+	<string name="forget_password_string">Forget password</string>
+	<string name="remember_password_string">Remember password</string>
+	<string name="login_wit_touch_id_string">Login wit touch ID</string>
+	<string name="email_address_string">Email Address</string>
+	<string name="password_string">Password</string>
+
+	<!-- home_search strings -->
+
+	<string name="search__component_input_text__string">Search</string>
+	<string name="yalp_string">Yalp</string>
+	<string name="logo_string">Looking for a place?</string>
+	<string name="restaurants_ek2_string">Restaurants</string>
+	<string name="delivery_ek2_string">Delivery</string>
+	<string name="coffee___tea_string">Coffee &amp; Tea</string>
+	<string name="takeout_string">Takeout</string>
+	<string name="hairdressers_ek2_string">Hairdressers</string>
+	<string name="reservations_ek2_string">Reservations</string>
+	<string name="bars_ek2_string">Bars</string>
+	<string name="more_ek2_string">More</string>
+
+	<!-- add_a_business strings -->
+
+
+	<string name="business_name_string">Add a business</string>
+	<string name="__description_component_input_textarea__string">Description</string>
+	<string name="__pricerange_component_input_text__string">What is your average price?</string>
+	<string name="__category__component_input_select_restaurant_coffe_tea_hairdresser_bar_delivery_takeout_reservation_other__string">Category</string>
+	<string name="__name_component_input_text__string">Name of your business</string>
+	<string name="__phone_component_input_text__string">Phone</string>
+	<string name="__web_component_input_text__string">Website</string>
+	<string name="__email_component_input_email__string">Your e-mail address</string>
+	<string name="btntxt_string">Create listing</string>
+
+	<!-- businesslist_category strings -->
+
+	<string name="______string">$$$$</string>
+	<string name="number_of_reviews_string">Number of reviews</string>
+	<string name="category_string">Category</string>
+	<string name="address_string">Address</string>
+	<string name="_______string"></string>
+	<string name="category_name_string">Category name</string>
+	<string name="search_component_input_text__action_filter__string">Search</string>
+
+</resources>

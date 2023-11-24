@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- frame_461 styles -->
+
+	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+	</style>
+
+	<!-- home_search styles -->
+
+<!--	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--		<item name="colorPrimary">@color/colorPrimary</item>-->
+<!--		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--		<item name="colorAccent">@color/colorAccent</item>-->
+<!--	</style>-->
+
+	<!-- add_a_business styles -->
+
+	<!-- businesslist_category styles -->
+
+
+
+</resources>
