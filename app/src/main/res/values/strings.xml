@@ -52,4 +52,16 @@
 	<string name="category_name_string">Category name</string>
 	<string name="search_component_input_text__action_filter__string">Search</string>
 
+	<!-- businessdetail strings -->
+
+
+	<string name="write_message_string">Write message</string>
+	<string name="call_string">Call</string>
+	<string name="visit_website_string">Visit website</string>
+	<string name="reviews_string">Reviews</string>
+	<string name="review_text_flexo__string">Review text</string>
+	<string name="author_string">Author</string>
+	<string name="_______ek1_string"></string>
+
+
 </resources>

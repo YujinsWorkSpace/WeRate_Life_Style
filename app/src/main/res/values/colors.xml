@@ -49,4 +49,12 @@
 	<color name="_______color">#D32323</color>
 	<color name="rectangle_214_color">#F3F3F3</color>
 	<color name="search_component_input_text__action_filter__color">#C4C4C4</color>
+
+	<!-- businessdetail colors -->
+
+
+	<color name="_bg__businessdetail_ek2_color">#FFFFFF</color>
+	<color name="_bg____container_slider_default__slider_indicator__cdbaac__slider_infinite__ek1_color">#000000</color>
+	<color name="rectangle_215_color">#F3F3F3</color>
+	<color name="write_message_color">#2F2F2F</color>
 </resources>
