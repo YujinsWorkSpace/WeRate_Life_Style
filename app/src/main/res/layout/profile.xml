@@ -148,7 +148,7 @@
 							>
 
 							<View   android:id="@+id/_bg__system_icon_24px_gender_ek1"
-								android:background="@drawable/profile_bg__system_icon_24px_gender_ek1_shape"
+
 								 android:layout_marginStart="0dp"
 								android:layout_marginTop="0dp"
 								android:layout_width="24dp"
@@ -162,15 +162,8 @@
 								android:layout_height="wrap_content"
 								>
 
-								<View   android:id="@+id/_bg__group_ek1"
-									android:background="@drawable/_bg__group_ek1_shape"
-									 android:layout_marginStart="-6dp"
-									android:layout_marginTop="-2dp"
-									android:layout_width="12dp"
-									android:layout_height="20dp" />
-
 								<ImageView android:id="@+id/vector"
-									android:src="@drawable/vector"
+									android:src="@drawable/profile_vector"
 									android:contentDescription="profile_vector"
 									 android:layout_marginStart="-2dp"
 									android:layout_marginTop="-2dp"
@@ -178,7 +171,7 @@
 									android:layout_height="14dp" />
 
 								<ImageView android:id="@+id/vector_ek1"
-									android:src="@drawable/vector_ek1"
+									android:src="@drawable/profile_vector_ek1"
 									android:contentDescription="vector_ek1"
 									 android:layout_marginStart="4dp"
 									android:layout_marginTop="10dp"
@@ -272,13 +265,6 @@
 							android:layout_height="wrap_content"
 							>
 
-							<View   android:id="@+id/_bg__system_icon_24px_date_ek1"
-								android:background="@drawable/profile_bg__system_icon_24px_date_ek1_shape"
-								 android:layout_marginStart="0dp"
-								android:layout_marginTop="0dp"
-								android:layout_width="24dp"
-								android:layout_height="24dp" />
-
 
 							<RelativeLayout android:id="@+id/group_ek2"
 								android:layout_marginTop="3dp"
@@ -286,13 +272,6 @@
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								>
-
-								<View   android:id="@+id/_bg__group_ek3"
-									android:background="@drawable/_bg__group_ek3_shape"
-									 android:layout_marginStart="-3dp"
-									android:layout_marginTop="-3dp"
-									android:layout_width="18dp"
-									android:layout_height="18dp" />
 
 								<ImageView android:id="@+id/vector_ek4"
 									android:src="@drawable/profile_vector_ek4"
@@ -377,12 +356,7 @@
 							android:layout_height="wrap_content"
 							>
 
-							<View   android:id="@+id/_bg__system_icon_24px_message_ek1"
-								android:background="@drawable/profile_bg__system_icon_24px_message_ek1_shape"
-								 android:layout_marginStart="0dp"
-								android:layout_marginTop="0dp"
-								android:layout_width="24dp"
-								android:layout_height="24dp" />
+
 
 
 							<RelativeLayout android:id="@+id/group_ek4"
@@ -393,20 +367,10 @@
 								>
 
 								<View   android:id="@+id/_bg__group_ek5"
-									android:background="@drawable/_bg__group_ek5_shape"
 									 android:layout_marginStart="-2dp"
 									android:layout_marginTop="-4dp"
 									android:layout_width="20dp"
 									android:layout_height="15.5dp" />
-
-								<ImageView
-									android:id="@+id/vector__stroke_"
-									android:layout_width="20dp"
-									android:layout_height="15.5dp"
-									android:layout_marginStart="0dp"
-									android:layout_marginTop="0dp"
-									android:contentDescription="vector__stroke_"
-									android:src="@drawable/vector__stroke_" />
 
 								<ImageView android:id="@+id/vector__stroke__ek1"
 									android:src="@drawable/profile_vector__stroke__ek1"
@@ -477,7 +441,7 @@
 							>
 
 							<View   android:id="@+id/_bg__system_icon_24px_phone_ek1"
-								android:background="@drawable/profile_bg__system_icon_24px_phone_ek1_shape"
+
 								 android:layout_marginStart="0dp"
 								android:layout_marginTop="0dp"
 								android:layout_width="24dp"
@@ -490,13 +454,6 @@
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								>
-
-								<View   android:id="@+id/_bg__group_ek7"
-									android:background="@drawable/_bg__group_ek7_shape"
-									 android:layout_marginStart="-6dp"
-									android:layout_marginTop="-3dp"
-									android:layout_width="11.25dp"
-									android:layout_height="18dp" />
 
 								<ImageView android:id="@+id/vector_ek7"
 									android:src="@drawable/profile_vector_ek7"
@@ -575,7 +532,7 @@
 							>
 
 							<View   android:id="@+id/_bg__system_icon_24px_password_ek1"
-								android:background="@drawable/profile_bg__system_icon_24px_password_ek1_shape"
+
 								 android:layout_marginStart="0dp"
 								android:layout_marginTop="0dp"
 								android:layout_width="24dp"
@@ -590,7 +547,7 @@
 								>
 
 								<View   android:id="@+id/_bg__group_ek9"
-									android:background="@drawable/_bg__group_ek9_shape"
+
 									 android:layout_marginStart="-2dp"
 									android:layout_marginTop="-2dp"
 									android:layout_width="20dp"
@@ -728,24 +685,7 @@
 					android:layout_marginStart="0dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					>
-
-					<View   android:id="@+id/_bg__ui___home_indicator_ek1"
-						android:background="@drawable/profile_bg__ui___home_indicator_ek1_shape"
-						 android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="375dp"
-						android:layout_height="34dp" />
-
-					<View   android:id="@+id/home_indicator"
-						android:background="@drawable/profile_home_indicator_shape"
-						 android:alpha="0.5"
-						 android:layout_marginStart="121dp"
-						android:layout_marginTop="21dp"
-						android:layout_width="134dp"
-						android:layout_height="5dp" />
-
-				</RelativeLayout>
+					/>
 
 			</RelativeLayout>
 		</RelativeLayout>

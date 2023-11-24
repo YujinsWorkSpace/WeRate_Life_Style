@@ -81,5 +81,14 @@
 	<string name="profile_ek5_string">Profile</string>
 	<string name="_9_41_string">9:41</string>
 
+	<!-- change_name strings -->
+
+	<string name="first_name_ek2_string">First Name</string>
+	<string name="maximus_string">Maximus</string>
+	<string name="last_name_ek2_string">Last Name</string>
+	<string name="gold_string">Gold</string>
+	<string name="save_string">Save</string>
+
+
 
 </resources>
