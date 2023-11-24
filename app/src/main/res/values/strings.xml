@@ -63,5 +63,23 @@
 	<string name="author_string">Author</string>
 	<string name="_______ek1_string"></string>
 
+	<!-- profile strings -->
+
+
+	<string name="name_string">Maximus Gold</string>
+	<string name="username_string">@derlaxy</string>
+	<string name="gender_ek2_string">Gender</string>
+	<string name="male_string">Male</string>
+	<string name="birthday_ek2_string">Birthday</string>
+	<string name="_12_12_2000_string">12-12-2000</string>
+	<string name="email_ek2_string">Email</string>
+	<string name="derlaxy_yahoo_com_string">Derlaxy@yahoo.com</string>
+	<string name="phone_number_ek2_string">Phone Number</string>
+	<string name="__307__555_0133_string">(307) 555-0133</string>
+	<string name="change_password_ek2_string">Change Password</string>
+	<string name="___________________string"></string>
+	<string name="profile_ek5_string">Profile</string>
+	<string name="_9_41_string">9:41</string>
+
 
 </resources>
