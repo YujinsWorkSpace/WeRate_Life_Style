@@ -89,6 +89,17 @@
 	<string name="gold_string">Gold</string>
 	<string name="save_string">Save</string>
 
+	<!-- change_password strings -->
+
+
+	<string name="old_password_ek2_string">Old Password</string>
+	<string name="new_password_ek2_string">New Password</string>
+	<string name="___________________ek1_string"></string>
+	<string name="new_password_again_ek2_string">New Password Again</string>
+	<string name="___________________ek2_string"></string>
+	<string name="change_password_ek3_string">Change Password</string>
+
+
 
 
 </resources>
