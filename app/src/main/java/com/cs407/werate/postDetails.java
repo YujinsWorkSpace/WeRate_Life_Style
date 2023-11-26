@@ -75,39 +75,17 @@ public class postDetails extends Activity {
 		setContentView(R.layout.post_details);
 
 		
-		_bg__businessdetail_ek2 = (View) findViewById(R.id._bg__businessdetail_ek2);
-		_bg____container_slider_default__slider_indicator__cdbaac__slider_infinite__ek1 = (View) findViewById(R.id._bg____container_slider_default__slider_indicator__cdbaac__slider_infinite__ek1);
+
+
 
 		platter_gab742ad7c_1920_1 = (ImageView) findViewById(R.id.platter_gab742ad7c_1920_1);
-		_bg__slide_2_ek1 = (View) findViewById(R.id._bg__slide_2_ek1);
-		platter_gab742ad7c_1920_1_ek1 = (ImageView) findViewById(R.id.platter_gab742ad7c_1920_1_ek1);
-		_bg__slide_3_ek1 = (View) findViewById(R.id._bg__slide_3_ek1);
-		platter_gab742ad7c_1920_1_ek2 = (ImageView) findViewById(R.id.platter_gab742ad7c_1920_1_ek2);
-
-		business_name = (TextView) findViewById(R.id.business_name);
-		_____ = (TextView) findViewById(R.id._____);
-		number_of_reviews = (TextView) findViewById(R.id.number_of_reviews);
-		category = (TextView) findViewById(R.id.category);
-		address = (TextView) findViewById(R.id.address);
-		______ = (TextView) findViewById(R.id.______);
-
-		vector = (ImageView) findViewById(R.id.vector);
-
-		vector_ek1 = (ImageView) findViewById(R.id.vector_ek1);
 
 
-		vector_ek2 = (ImageView) findViewById(R.id.vector_ek2);
-		_bg____container__ek3 = (View) findViewById(R.id._bg____container__ek3);
-		_bg__group_427319990_ek1 = (View) findViewById(R.id._bg__group_427319990_ek1);
-		rectangle_218 = (View) findViewById(R.id.rectangle_218);
-		btntxt = (TextView) findViewById(R.id.btntxt);
-		reviews = (TextView) findViewById(R.id.reviews);
-		_bg____reviews_container__ek1 = (View) findViewById(R.id._bg____reviews_container__ek1);
-		review_text_flexo_ = (TextView) findViewById(R.id.review_text_flexo_);
-		author = (TextView) findViewById(R.id.author);
-		_______ek1 = (TextView) findViewById(R.id._______ek1);
-		rectangle_216 = (View) findViewById(R.id.rectangle_216);
-		_bg__topbar_container_top_bar__ek1 = (View) findViewById(R.id._bg__topbar_container_top_bar__ek1);
+
+
+
+
+
 		rectangle_1 = (View) findViewById(R.id.rectangle_1);
 		yalp = (TextView) findViewById(R.id.yalp);
 		vector_ek3 = (ImageView) findViewById(R.id.vector_ek3);
