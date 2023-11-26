@@ -18,6 +18,7 @@
 package com.cs407.werate;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -25,7 +26,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class businesslist_category_activity extends Activity {
+public class postList_by_category extends Activity {
 
 	
 	private View _bg__businesslist_category;
@@ -53,7 +54,7 @@ public class businesslist_category_activity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.businesslist_category);
+		setContentView(R.layout.post_list_by_categories);
 
 		
 		_bg__businesslist_category = (View) findViewById(R.id._bg__businesslist_category);
@@ -78,8 +79,27 @@ public class businesslist_category_activity extends Activity {
 		vector_ek1 = (ImageView) findViewById(R.id.vector_ek1);
 	
 		
-		//custom code goes here
-	
+		//yujin's code:
+
+		// set category name title
+		String textReceived = getIntent().getStringExtra("category");
+		category_name.setText("Results for " + textReceived);
+
+		// set go back to home page
+		vector.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+
+		_bg____businessitem_container__ek1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(postList_by_category.this, postDetails.class);
+				startActivity(intent);
+			}
+		});
 	}
 }
 	

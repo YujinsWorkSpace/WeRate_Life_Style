@@ -146,7 +146,7 @@
 					android:textColor="@color/_bg____businessitem_container__ek1_color"
 					android:layout_marginLeft="18.02dp"
 					android:layout_marginTop="21.13dp"
-					android:layout_width="258.81dp"
+					android:layout_width="wrap_content"
 					android:layout_height="52.13dp"
 					android:text="@string/category_name_string"
 					 />

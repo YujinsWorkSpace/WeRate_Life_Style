@@ -25,7 +25,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class businessdetail_activity extends Activity {
+public class postDetails extends Activity {
 
 	
 	private View _bg__businessdetail_ek2;
@@ -72,7 +72,7 @@ public class businessdetail_activity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.businessdetail);
+		setContentView(R.layout.post_details);
 
 		
 		_bg__businessdetail_ek2 = (View) findViewById(R.id._bg__businessdetail_ek2);
@@ -83,22 +83,19 @@ public class businessdetail_activity extends Activity {
 		platter_gab742ad7c_1920_1_ek1 = (ImageView) findViewById(R.id.platter_gab742ad7c_1920_1_ek1);
 		_bg__slide_3_ek1 = (View) findViewById(R.id._bg__slide_3_ek1);
 		platter_gab742ad7c_1920_1_ek2 = (ImageView) findViewById(R.id.platter_gab742ad7c_1920_1_ek2);
-		_bg____container__ek1 = (View) findViewById(R.id._bg____container__ek1);
+
 		business_name = (TextView) findViewById(R.id.business_name);
 		_____ = (TextView) findViewById(R.id._____);
 		number_of_reviews = (TextView) findViewById(R.id.number_of_reviews);
 		category = (TextView) findViewById(R.id.category);
 		address = (TextView) findViewById(R.id.address);
 		______ = (TextView) findViewById(R.id.______);
-		rectangle_215 = (View) findViewById(R.id.rectangle_215);
-		_bg__write_ek1 = (View) findViewById(R.id._bg__write_ek1);
-		write_message = (TextView) findViewById(R.id.write_message);
+
 		vector = (ImageView) findViewById(R.id.vector);
-		_bg____call_action_phone__34123456789__ek1 = (View) findViewById(R.id._bg____call_action_phone__34123456789__ek1);
-		call = (TextView) findViewById(R.id.call);
+
 		vector_ek1 = (ImageView) findViewById(R.id.vector_ek1);
-		_bg____web_action_openurl_https___www_bravostudio_app__ek1 = (View) findViewById(R.id._bg____web_action_openurl_https___www_bravostudio_app__ek1);
-		visit_website = (TextView) findViewById(R.id.visit_website);
+
+
 		vector_ek2 = (ImageView) findViewById(R.id.vector_ek2);
 		_bg____container__ek3 = (View) findViewById(R.id._bg____container__ek3);
 		_bg__group_427319990_ek1 = (View) findViewById(R.id._bg__group_427319990_ek1);
@@ -116,7 +113,13 @@ public class businessdetail_activity extends Activity {
 		vector_ek3 = (ImageView) findViewById(R.id.vector_ek3);
 	
 		
-		//custom code goes here
+		//yujin's code
+		vector_ek3.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
 	
 	}
 }

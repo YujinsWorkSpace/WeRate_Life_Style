@@ -19,14 +19,18 @@ package com.cs407.werate;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ImageView;
 
-public class home_search_activity extends Activity {
+public class homePage extends Activity {
 
 	
 	private View _bg__home_search_ek2;
@@ -86,13 +90,16 @@ public class home_search_activity extends Activity {
 	private View _bg__more_ek1;
 	private ImageView vector_ek19;
 	private TextView more_ek2;
+	private SharedPreferences sharedPreferences;
 
 	@SuppressLint("MissingInflatedId")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.home_search);
+		setContentView(R.layout.home_page);
+
+		sharedPreferences = getSharedPreferences("loginStatus", Context.MODE_PRIVATE);
 
 		
 		_bg__home_search_ek2 = (View) findViewById(R.id._bg__home_search_ek2);
@@ -149,13 +156,79 @@ public class home_search_activity extends Activity {
 		vector_4 = (ImageView) findViewById(R.id.vector_4);
 		vector_5 = (ImageView) findViewById(R.id.vector_5);
 		vector_6 = (ImageView) findViewById(R.id.vector_6);
-		_bg__more_ek1 = (View) findViewById(R.id._bg__more_ek1);
+		_bg__more_ek1 = (View) findViewById(R.id.logout_btn);
 		vector_ek19 = (ImageView) findViewById(R.id.vector_ek19);
 		more_ek2 = (TextView) findViewById(R.id.more_ek2);
 	
 		
-		//custom code goes here
+		// yujin's code
+
+		// handle click on logout
+		_bg__more_ek1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				handleLogout();
+			}
+		});
+
+		// handle onClick for restaurants
+		_bg__restaurants_ek1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(homePage.this, postList_by_category.class);
+				String category = getResources().getString(R.string.restaurants_ek2_string);
+				intent.putExtra("category", category);
+				startActivity(intent);
+			}
+		});
+
+		// handle onClick for coffee
+		_bg__coffee_ek1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(homePage.this, postList_by_category.class);
+				String category = "Coffee";
+				intent.putExtra("category", category);
+				startActivity(intent);
+			}
+		});
+
+		// handle onClick for hairDressers
+		_bg__hairdressers_ek1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(homePage.this, postList_by_category.class);
+				String category = "Hairdressers";
+				intent.putExtra("category", category);
+				startActivity(intent);
+			}
+		});
+
+		// handle onClick for Bars
+		_bg__bars_ek1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(homePage.this, postList_by_category.class);
+				String category = "Bars";
+				intent.putExtra("category", category);
+				startActivity(intent);
+			}
+		});
 	
+	}
+
+
+
+
+	private void handleLogout() {
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		editor.putBoolean("isLoggedIn", false);
+		editor.apply();
+
+		Intent intent = new Intent(homePage.this, login.class);
+		startActivity(intent);
+
+		finish();
 	}
 }
 	

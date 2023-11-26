@@ -176,10 +176,10 @@
 						>
 
 						<View   android:id="@+id/_bg__restaurants_ek1"
-							 android:layout_marginStart="-33dp"
-							android:layout_marginTop="-27dp"
-							android:layout_width="70dp"
-							android:layout_height="62.81dp" />
+							 android:layout_marginStart="-3dp"
+							android:layout_marginTop="-5dp"
+							android:layout_width="75dp"
+							android:layout_height="69.81dp" />
 
 						<TextView android:id="@+id/restaurants_ek2"
 							android:layout_gravity="center_horizontal|center"
@@ -307,9 +307,8 @@
 						>
 
 						<View   android:id="@+id/_bg__coffee_ek1"
-							android:background="@drawable/home_bg__coffee_ek1_shape"
-							 android:layout_marginStart="-119dp"
-							android:layout_marginTop="-27dp"
+							 android:layout_marginStart="-0dp"
+							android:layout_marginTop="0dp"
 							android:layout_width="83.8dp"
 							android:layout_height="62.8dp" />
 
@@ -393,9 +392,6 @@
 						>
 
 						<View   android:id="@+id/_bg__restaurants_ek4"
-							android:background="@drawable/home_bg__restaurants_ek4_shape"
-							 android:layout_marginStart="-138dp"
-							android:layout_marginTop="-131dp"
 							android:layout_width="47dp"
 							android:layout_height="58.47dp" />
 
@@ -406,9 +402,9 @@
 							android:textColor="@color/_bg__topbar_container_top_bar__ek1_color"
 							android:layout_marginLeft="-2dp"
 							android:layout_marginTop="37dp"
-							android:layout_width="53.4dp"
+							android:layout_width="wrap_content"
 							android:layout_height="25.4dp"
-							android:text="@string/takeout_string"
+							android:text="Shopping"
 							 />
 
 
@@ -463,9 +459,6 @@
 						>
 
 						<View   android:id="@+id/_bg__hairdressers_ek1"
-							android:background="@drawable/home_bg__hairdressers_ek1_shape"
-							 android:layout_marginStart="-217dp"
-							android:layout_marginTop="-25dp"
 							android:layout_width="74dp"
 							android:layout_height="64.84dp" />
 
@@ -500,9 +493,6 @@
 						>
 
 						<View   android:id="@+id/_bg__reservations_ek1"
-							android:background="@drawable/home_bg__reservations_ek1_shape"
-							 android:layout_marginStart="-216dp"
-							android:layout_marginTop="-126dp"
 							android:layout_width="76dp"
 							android:layout_height="63.52dp" />
 
@@ -515,11 +505,9 @@
 							>
 
 							<View   android:id="@+id/_bg__calendar_ek1"
-
-								 android:layout_marginStart="0dp"
-								android:layout_marginTop="0dp"
-								android:layout_width="30dp"
-								android:layout_height="30dp" />
+								android:layout_marginStart="-25dp"
+								android:layout_width="70dp"
+								android:layout_height="65dp" />
 
 							<ImageView android:id="@+id/vector_ek15"
 								android:src="@drawable/home_vector_ek15"
@@ -578,9 +566,6 @@
 						>
 
 						<View   android:id="@+id/_bg__bars_ek1"
-							android:background="@drawable/home_bg__bars_ek1_shape"
-							 android:layout_marginStart="-321dp"
-							android:layout_marginTop="-23dp"
 							android:layout_width="51dp"
 							android:layout_height="67dp" />
 
@@ -606,7 +591,7 @@
 
 <!--							bars box-->
 							<View   android:id="@+id/_bg__group_427319992_ek1"
-								android:background="@drawable/home_bg__group_427319992_ek1_shape"
+
 								 android:layout_marginStart="-333dp"
 								android:layout_marginTop="-23dp"
 								android:layout_width="30dp"
@@ -654,37 +639,46 @@
 
 
 					<RelativeLayout android:id="@+id/more"
-						android:layout_marginTop="138.11dp"
-						android:layout_marginStart="331.89dp"
+						android:layout_marginTop="129.11dp"
+						android:layout_marginStart="328.89dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						>
 
-						<View   android:id="@+id/_bg__more_ek1"
-							android:background="@drawable/home_bg__more_ek1_shape"
-							 android:layout_marginStart="-332dp"
-							android:layout_marginTop="-138dp"
-							android:layout_width="31dp"
-							android:layout_height="51.42dp" />
+						<View   android:id="@+id/logout_btn"
+							android:layout_width="39dp"
+							android:layout_height="55.42dp" />
 
 						<ImageView android:id="@+id/vector_ek19"
-							android:src="@drawable/home_vector_ek19"
+							android:src="@drawable/logout_vector"
 							android:contentDescription="vector_ek19"
-							 android:layout_marginStart="4dp"
+
+							 android:layout_marginStart="0dp"
+							android:layout_marginLeft="1dp"
 							android:layout_marginTop="0dp"
-							android:layout_width="23.33dp"
-							android:layout_height="5.83dp" />
+							android:layout_width="30.33dp"
+							android:layout_height="27.83dp" />
+
+						<ImageView
+							android:id="@+id/logouterror"
+							android:src="@drawable/logout_vector_ek1"
+							android:layout_marginStart="2dp"
+							android:layout_marginLeft="-3dp"
+							android:layout_marginTop="8dp"
+							android:layout_width="60.33dp"
+							android:layout_height="10.83dp" />
 
 						<TextView android:id="@+id/more_ek2"
+
 							android:layout_gravity="center_horizontal|center"
 							android:gravity="center"
 							android:textSize="14sp"
 							android:textColor="@color/_bg__topbar_container_top_bar__ek1_color"
 							android:layout_marginLeft="-2dp"
-							android:layout_marginTop="30dp"
-							android:layout_width="37.4dp"
+							android:layout_marginTop="41dp"
+							android:layout_width="wrap_content"
 							android:layout_height="25.4dp"
-							android:text="@string/more_ek2_string"
+							android:text="Logout"
 							 />
 
 					</RelativeLayout>

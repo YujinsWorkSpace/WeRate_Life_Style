@@ -23,7 +23,7 @@ package com.cs407.werate;
     import android.widget.ImageView;
     import android.widget.TextView;
 
-    public class add_a_business_activity extends Activity {
+    public class addPost extends Activity {
 
 
         private View _bg__add_a_business_ek2;
@@ -66,7 +66,7 @@ package com.cs407.werate;
         public void onCreate(Bundle savedInstanceState) {
 
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.add_a_business);
+            setContentView(R.layout.add_post);
 
 
             _bg__add_a_business_ek2 = (View) findViewById(R.id._bg__add_a_business_ek2);
