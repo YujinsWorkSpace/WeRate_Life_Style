@@ -1,0 +1,141 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+
+<!--
+	/*
+	 *	This content is generated from the API File Info.
+	 *	(Alt+Shift+Ctrl+I).
+	 *
+	 *	@desc
+	 *	@file 		businessdetail
+	 *	@date 		Friday 24th of November 2023 04:09:43 AM
+	 *	@title 		Page 1
+	 *	@author
+	 *	@keywords
+	 *	@generator 	Export Kit v1.3.figma
+	 *
+	 */
+	-->
+	<ScrollView android:id="@+id/businessdetail"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		>
+
+		<RelativeLayout android:id="@+id/content_container"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			>
+
+			<View
+				android:id="@+id/rectangle_1"
+				android:background="@drawable/detail_rectangle_1_shape"
+				android:layout_width="match_parent"
+				android:layout_height="80dp" />
+
+				<TextView android:id="@+id/yalp"
+					android:textStyle="bold"
+					android:layout_gravity="center_horizontal|center"
+					android:gravity="center"
+					android:textSize="24sp"
+					android:textColor="@color/_bg__businessdetail_ek2_color"
+					android:layout_marginLeft="78.26dp"
+					android:layout_marginTop="17dp"
+					android:layout_width="257dp"
+					android:layout_height="62.72dp"
+					android:text="WeRate"
+					/>
+
+				<ImageView android:id="@+id/vector_ek3"
+					android:src="@drawable/detail_vector_ek3"
+					android:contentDescription="vector_ek3"
+					android:layout_marginStart="18.2dp"
+					android:layout_marginTop="31.96dp"
+					android:layout_width="26dp"
+					android:layout_height="26.24dp" />
+
+				<ImageView android:id="@+id/platter_gab742ad7c_1920_1"
+					android:src="@drawable/detail_platter_gab742ad7c_1920_1"
+					android:contentDescription="platter_gab742ad7c_1920_1"
+					android:layout_marginTop="80dp"
+					android:layout_width="match_parent"
+					android:layout_height="200dp"
+					android:adjustViewBounds="true"
+					android:scaleType="fitXY"
+					/>
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				>
+				<TextView
+					android:id="@+id/title"
+					android:layout_marginTop="290dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="PostTitle"
+					android:textStyle="bold"
+					android:textSize="24dp"
+					android:layout_marginLeft="5dp"
+					/>
+
+				<TextView
+					android:id="@+id/content"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Post Content"
+					android:textSize="20dp"
+					android:layout_marginLeft="5dp"
+					android:layout_marginBottom="15dp"
+					/>
+
+				<TextView
+					android:id="@+id/date"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Posted at 09:42 Nov 25, 2023"
+					android:layout_marginLeft="5dp"
+					android:layout_marginBottom="7dp"
+					/>
+
+				<View
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginTop="2dp"
+				android:background="@android:color/darker_gray"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"/>
+
+				<TextView
+					android:id="@+id/review"
+					android:layout_marginTop="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Review(#)"
+					android:textSize="30dp"
+					android:textStyle="bold"
+					android:layout_marginLeft="5dp"
+					/>
+
+				<EditText
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:hint="add a comment:"
+					/>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:text="user comment goes here"
+					/>
+
+
+			</LinearLayout>
+		</RelativeLayout>
+
+	</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

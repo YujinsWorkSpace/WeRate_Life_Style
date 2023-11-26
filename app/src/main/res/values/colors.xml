@@ -49,4 +49,38 @@
 	<color name="_______color">#D32323</color>
 	<color name="rectangle_214_color">#F3F3F3</color>
 	<color name="search_component_input_text__action_filter__color">#C4C4C4</color>
+
+	<!-- businessdetail colors -->
+
+
+	<color name="_bg__businessdetail_ek2_color">#FFFFFF</color>
+	<color name="_bg____container_slider_default__slider_indicator__cdbaac__slider_infinite__ek1_color">#000000</color>
+	<color name="rectangle_215_color">#F3F3F3</color>
+	<color name="write_message_color">#2F2F2F</color>
+
+	<!-- profile colors -->
+
+	<color name="_bg__profile_ek2_color">#FFFFFF</color>
+	<color name="_bg__profile_ek4_color">#000000</color>
+	<color name="name_color">#223263</color>
+	<color name="username_color">#9098B1</color>
+	<color name="home_indicator_color">#D1D6E7</color>
+
+	<!-- change_name colors -->
+
+
+	<color name="_bg__change_name_ek2_color">#FFFFFF</color>
+	<color name="_bg__first_name_ek1_color">#000000</color>
+	<color name="first_name_ek2_color">#223263</color>
+	<color name="maximus_color">#9098B1</color>
+	<color name="_bg__save_button_ek1_color">#40BFFF</color>
+
+	<!-- change_password colors -->
+
+	<color name="_bg__change_password_ek2_color">#FFFFFF</color>
+	<color name="_bg__old_password_ek1_color">#000000</color>
+	<color name="old_password_ek2_color">#223263</color>
+	<color name="___________________color">#9098B1</color>
+
+
 </resources>

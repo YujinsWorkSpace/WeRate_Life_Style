@@ -9,7 +9,7 @@
 		android:theme="@style/AppTheme"
 		android:label="@string/app_name" >
 		<activity
-		android:name="com.cs407.werate.frame_461_activity"
+		android:name="com.cs407.werate.login"
 		android:configChanges="orientation|keyboardHidden|screenSize"
 		android:label="@string/app_name"
 		android:exported="true"  >
@@ -19,36 +19,80 @@
 			</intent-filter>
 		</activity>
 
-		<activity android:name=".home_search_activity"
+		<activity android:name=".homePage"
 			android:exported="true">
-			<intent-filter>
-				<action android:name="android.intent.action.ALL_APPS" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
+<!--			<intent-filter>-->
+<!--				<action android:name="android.intent.action.ALL_APPS" />-->
+<!--				<category android:name="android.intent.category.LAUNCHER" />-->
+<!--			</intent-filter>-->
 
 
 		</activity>
 
 		<activity
-			android:name=".add_a_business_activity"
+			android:name=".addPost"
 			android:configChanges="orientation|keyboardHidden|screenSize"
 			android:label="@string/app_name"
 			android:exported="true"  >
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
+<!--			<intent-filter>-->
+<!--				<action android:name="android.intent.action.MAIN" />-->
+<!--				<category android:name="android.intent.category.LAUNCHER" />-->
+<!--			</intent-filter>-->
 		</activity>
 
 		<activity
-			android:name=".businesslist_category_activity"
+			android:name=".postList_by_category"
 			android:configChanges="orientation|keyboardHidden|screenSize"
 			android:label="@string/app_name"
 			android:exported="true"  >
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
+<!--			<intent-filter>-->
+<!--				<action android:name="android.intent.action.MAIN" />-->
+<!--				<category android:name="android.intent.category.LAUNCHER" />-->
+<!--			</intent-filter>-->
+		</activity>
+
+		<activity
+			android:name=".postDetails"
+			android:configChanges="orientation|keyboardHidden|screenSize"
+			android:label="@string/app_name"
+			android:exported="true"  >
+<!--			<intent-filter>-->
+<!--				<action android:name="android.intent.action.MAIN" />-->
+<!--				<category android:name="android.intent.category.LAUNCHER" />-->
+<!--			</intent-filter>-->
+		</activity>
+
+		<activity
+			android:name=".profile_activity"
+			android:configChanges="orientation|keyboardHidden|screenSize"
+			android:label="@string/app_name"
+			android:exported="true"  >
+<!--			<intent-filter>-->
+<!--				<action android:name="android.intent.action.MAIN" />-->
+<!--				<category android:name="android.intent.category.LAUNCHER" />-->
+<!--			</intent-filter>-->
+		</activity>
+
+		<activity
+			android:name=".change_name_activity"
+			android:configChanges="orientation|keyboardHidden|screenSize"
+			android:label="@string/app_name"
+			android:exported="true"  >
+<!--			<intent-filter>-->
+<!--				<action android:name="android.intent.action.MAIN" />-->
+<!--				<category android:name="android.intent.category.LAUNCHER" />-->
+<!--			</intent-filter>-->
+		</activity>
+
+		<activity
+			android:name=".change_password_activity"
+			android:configChanges="orientation|keyboardHidden|screenSize"
+			android:label="@string/app_name"
+			android:exported="true"  >
+<!--			<intent-filter>-->
+<!--				<action android:name="android.intent.action.MAIN" />-->
+<!--				<category android:name="android.intent.category.LAUNCHER" />-->
+<!--			</intent-filter>-->
 		</activity>
 
 	</application>

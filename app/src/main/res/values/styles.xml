@@ -8,6 +8,10 @@
 		<item name="colorAccent">@color/colorAccent</item>
 	</style>
 
+	<!-- profile styles -->
+
+
+
 	<!-- home_search styles -->
 
 <!--	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
@@ -19,6 +23,10 @@
 	<!-- add_a_business styles -->
 
 	<!-- businesslist_category styles -->
+
+	<!-- change_name styles -->
+
+
 
 
 

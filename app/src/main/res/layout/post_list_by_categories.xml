@@ -1,0 +1,246 @@
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent" android:layout_height="wrap_content" >
+	<!-- 
+	/*
+	 *	This content is generated from the API File Info.
+	 *	(Alt+Shift+Ctrl+I).
+	 *
+	 *	@desc 		
+	 *	@file 		businesslist_category
+	 *	@date 		Friday 24th of November 2023 03:53:26 AM
+	 *	@title 		Page 1
+	 *	@author 	
+	 *	@keywords 	
+	 *	@generator 	Export Kit v1.3.figma
+	 *
+	 */
+	-->
+	<ScrollView android:id="@+id/businesslist_category" 
+		android:layout_width="wrap_content" 
+		android:layout_height="match_parent" >
+
+		<RelativeLayout android:id="@+id/content_container" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" >
+
+			<View   android:id="@+id/_bg__businesslist_category"
+				android:background="@drawable/search_bg__businesslist_category_shape"
+				 android:layout_marginStart="0dp"
+				android:layout_marginTop="0dp"
+				android:layout_width="414dp"
+				android:layout_height="896dp" />
+
+
+			<RelativeLayout android:id="@+id/__businessitem_container_"
+				android:layout_marginTop="238dp"
+				android:layout_marginStart="0dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				>
+
+				<View   android:id="@+id/_bg____businessitem_container__ek1"
+					 android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="414dp"
+					android:layout_height="177dp" />
+
+				<ImageView android:id="@+id/platter_gab742ad7c_1920_1"
+					android:src="@drawable/search_platter_gab742ad7c_1920_1"
+					android:contentDescription="platter_gab742ad7c_1920_1"
+					 android:layout_marginStart="18dp"
+					android:layout_marginTop="17dp"
+					android:layout_width="122dp"
+					android:layout_height="122dp" />
+
+				<TextView android:id="@+id/business_name"
+					android:textStyle="bold"
+					android:textSize="24sp"
+					android:textColor="@color/_bg____businessitem_container__ek1_color"
+					android:layout_marginLeft="155dp"
+					android:layout_marginTop="13dp"
+					android:layout_width="259.4dp"
+					android:layout_height="63.4dp"
+					android:text="@string/business_name_string"
+					 />
+
+				<TextView android:id="@+id/_____"
+					android:textSize="16sp"
+					android:textColor="@color/______color"
+					android:layout_marginLeft="155.5dp"
+					android:layout_marginTop="96dp"
+					android:layout_width="60.98dp"
+					android:layout_height="31.28dp"
+					android:text="@string/______string"
+					 />
+
+				<TextView android:id="@+id/number_of_reviews"
+					android:layout_gravity="center_vertical|end"
+					android:gravity="end"
+					android:textSize="16sp"
+					android:textColor="@color/______color"
+					android:layout_marginLeft="249.99dp"
+					android:layout_marginTop="69.5dp"
+					android:layout_width="149dp"
+					android:layout_height="31.28dp"
+					android:text="@string/number_of_reviews_string"
+					 />
+
+				<TextView android:id="@+id/category"
+					android:layout_gravity="center_vertical|end"
+					android:gravity="end"
+					android:textSize="16sp"
+					android:textColor="@color/category_color"
+					android:layout_marginLeft="254.7dp"
+					android:layout_marginTop="96dp"
+					android:layout_width="144dp"
+					android:layout_height="31.28dp"
+					android:text="@string/category_string"
+					 />
+
+				<TextView android:id="@+id/address"
+					android:textSize="16sp"
+					android:textColor="@color/______color"
+					android:layout_marginLeft="155.5dp"
+					android:layout_marginTop="122dp"
+					android:layout_width="254.01dp"
+					android:layout_height="45.36dp"
+					android:text="@string/address_string"
+					 />
+
+				<TextView android:id="@+id/______"
+					android:textSize="16sp"
+					android:textColor="@color/_______color"
+					android:layout_marginLeft="155.5dp"
+					android:layout_marginTop="69.5dp"
+					android:layout_width="116.8dp"
+					android:layout_height="31.28dp"
+					android:text="@string/_______string"
+					 />
+
+				<View   android:id="@+id/rectangle_214"
+					android:background="@drawable/search_rectangle_214_shape"
+					 android:layout_marginStart="18dp"
+					android:layout_marginTop="171dp"
+					android:layout_width="379dp"
+					android:layout_height="3dp" />
+
+			</RelativeLayout>
+
+
+			<RelativeLayout android:id="@+id/category__container_"
+				android:layout_marginTop="151dp"
+				android:layout_marginStart="0dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				>
+
+				<View   android:id="@+id/_bg__category__container__ek1"
+					 android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="414dp"
+					android:layout_height="87dp" />
+
+				<TextView android:id="@+id/category_name"
+					android:textStyle="bold"
+					android:textSize="24sp"
+					android:textColor="@color/_bg____businessitem_container__ek1_color"
+					android:layout_marginLeft="18.02dp"
+					android:layout_marginTop="21.13dp"
+					android:layout_width="wrap_content"
+					android:layout_height="52.13dp"
+					android:text="@string/category_name_string"
+					 />
+
+			</RelativeLayout>
+
+
+			<RelativeLayout android:id="@+id/topbar_container_top_bar_"
+				android:layout_marginTop="0dp"
+				android:layout_marginStart="0.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				>
+
+				<View   android:id="@+id/_bg__topbar_container_top_bar__ek1"
+					android:background="@drawable/search_bg__topbar_container_top_bar__ek1_shape"
+					 android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="414dp"
+					android:layout_height="151dp" />
+
+				<View   android:id="@+id/rectangle_1"
+					android:background="@drawable/search_rectangle_1_shape"
+					 android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="414dp"
+					android:layout_height="151dp" />
+
+				<TextView android:id="@+id/yalp"
+					android:textStyle="bold"
+					android:layout_gravity="center_horizontal|center"
+					android:gravity="center"
+					android:textSize="24sp"
+					android:textColor="@color/_bg__businesslist_category_color"
+					android:layout_marginLeft="78.26dp"
+					android:layout_marginTop="27dp"
+					android:layout_width="257dp"
+					android:layout_height="62.72dp"
+					android:text="WeRate"
+					 />
+
+				<ImageView android:id="@+id/vector"
+					android:src="@drawable/search_vector"
+					android:contentDescription="vector"
+					 android:layout_marginStart="18.2dp"
+					android:layout_marginTop="41.96dp"
+					android:layout_width="26dp"
+					android:layout_height="26.24dp" />
+
+
+				<RelativeLayout android:id="@+id/searchfield"
+					android:layout_marginTop="92dp"
+					android:layout_marginStart="18dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					>
+
+					<View   android:id="@+id/_bg__searchfield_ek1"
+						android:background="@drawable/search_bg__searchfield_ek1_shape"
+						 android:layout_marginStart="-18dp"
+						android:layout_marginTop="-92dp"
+						android:layout_width="381dp"
+						android:layout_height="46dp" />
+
+					<View   android:id="@+id/rectangle_2"
+						android:background="@drawable/search_rectangle_2_shape"
+						 android:layout_marginStart="0dp"
+						android:layout_marginTop="0dp"
+						android:layout_width="381dp"
+						android:layout_height="46dp" />
+
+					<TextView android:id="@+id/search_component_input_text__action_filter_"
+						android:textSize="20sp"
+						android:textColor="@color/search_component_input_text__action_filter__color"
+						android:layout_marginLeft="45dp"
+						android:layout_marginTop="2dp"
+						android:layout_width="343dp"
+						android:layout_height="48dp"
+						android:text="@string/search_component_input_text__action_filter__string"
+						 />
+
+					<ImageView android:id="@+id/vector_ek1"
+						android:src="@drawable/vector_ek1"
+						android:contentDescription="vector_ek1"
+						 android:layout_marginStart="12dp"
+						android:layout_marginTop="13dp"
+						android:layout_width="20dp"
+						android:layout_height="20dp" />
+
+				</RelativeLayout>
+
+			</RelativeLayout>
+
+		</RelativeLayout>
+
+	</ScrollView>
+</HorizontalScrollView>
