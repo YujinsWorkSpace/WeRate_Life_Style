@@ -99,7 +99,12 @@
 	<string name="___________________ek2_string"></string>
 	<string name="change_password_ek3_string">Change Password</string>
 
-
+	<!-- gender_DropDown Menu -->
+	<string-array name="gender_dropdown_items">
+		<item>""</item>
+		<item>"Female"</item>
+		<item>"Male"</item>
+	</string-array>
 
 
 </resources>

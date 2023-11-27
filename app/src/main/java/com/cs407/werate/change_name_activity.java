@@ -18,6 +18,11 @@
 package com.cs407.werate;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 
@@ -56,6 +61,12 @@ public class change_name_activity extends Activity {
 	private TextView _9_41;
 	private View _bg__ui___home_indicator_ek1;
 	private View home_indicator;
+	private SharedPreferences sharedPreferences;
+
+	private TextView firstName;
+	private TextView lastName;
+	private ImageView back_btn;
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -63,29 +74,57 @@ public class change_name_activity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.change_name);
 
-		
-		_bg__change_name_ek2 = (View) findViewById(R.id._bg__change_name_ek2);
+		sharedPreferences = getSharedPreferences("user_number", Context.MODE_PRIVATE);
+
+
+
 		_bg__first_name_ek1 = (View) findViewById(R.id._bg__first_name_ek1);
 		first_name_ek2 = (TextView) findViewById(R.id.first_name_ek2);
 		_bg__first_name_form_ek1 = (View) findViewById(R.id._bg__first_name_form_ek1);
-		maximus = (TextView) findViewById(R.id.maximus);
-		_bg__last_name_ek1 = (View) findViewById(R.id._bg__last_name_ek1);
 		last_name_ek2 = (TextView) findViewById(R.id.last_name_ek2);
 		_bg__last_name_form_ek1 = (View) findViewById(R.id._bg__last_name_form_ek1);
-		gold = (TextView) findViewById(R.id.gold);
+
 		_bg__save_button_ek1 = (View) findViewById(R.id._bg__save_button_ek1);
 		save = (TextView) findViewById(R.id.save);
-		_bg__header_ek1 = (View) findViewById(R.id._bg__header_ek1);
-		rectangle_406 = (View) findViewById(R.id.rectangle_406);
-		name = (TextView) findViewById(R.id.name);
-		line_39 = (ImageView) findViewById(R.id.line_39);
-		_bg__system_icon_24px_left_ek1 = (View) findViewById(R.id._bg__system_icon_24px_left_ek1);
-		vector = (ImageView) findViewById(R.id.vector);
-		_bg__ui___status_bars_ek1 = (View) findViewById(R.id._bg__ui___status_bars_ek1);
+
+		firstName = (TextView) findViewById(R.id.user_firstName);
+		lastName = (TextView) findViewById(R.id.user_lastName);
+		back_btn = (ImageView) findViewById(R.id.vector_ek3);
+
+		String firstExtra = getIntent().getStringExtra("pass_first");
+		String lastExtra = getIntent().getStringExtra("pass_last");
+
+		firstName.setText(firstExtra);
+		lastName.setText(lastExtra);
 
 	
 		
 		//custom code goes here
+
+
+		// handle onClick for save button
+		_bg__save_button_ek1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String f = firstName.getText().toString();
+				String l = lastName.getText().toString();
+
+				SharedPreferences.Editor editor = sharedPreferences.edit();
+
+				editor.putString("firstName", f);
+				editor.putString("lastName", l);
+
+				editor.apply();
+				finish();
+			}
+		});
+
+		back_btn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
 	
 	}
 }

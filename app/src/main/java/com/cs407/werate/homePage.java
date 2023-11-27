@@ -91,6 +91,7 @@ public class homePage extends Activity {
 	private ImageView vector_ek19;
 	private TextView more_ek2;
 	private SharedPreferences sharedPreferences;
+	private View shopping;
 
 	@SuppressLint("MissingInflatedId")
 	@Override
@@ -118,7 +119,7 @@ public class homePage extends Activity {
 		restaurants_ek2 = (TextView) findViewById(R.id.restaurants_ek2);
 		_bg__group_427319991_ek1 = (View) findViewById(R.id._bg__group_427319991_ek1);
 		vector__stroke_ = (ImageView) findViewById(R.id.vector__stroke_);
-		_bg__delivery_ek1 = (View) findViewById(R.id._bg__delivery_ek1);
+		_bg__delivery_ek1 = (View) findViewById(R.id.myProfile);
 		delivery_ek2 = (TextView) findViewById(R.id.delivery_ek2);
 		_bg__truck_ek1 = (View) findViewById(R.id._bg__truck_ek1);
 		vector_ek2 = (ImageView) findViewById(R.id.vector_ek2);
@@ -133,7 +134,7 @@ public class homePage extends Activity {
 		vector_ek8 = (ImageView) findViewById(R.id.vector_ek8);
 		vector_ek9 = (ImageView) findViewById(R.id.vector_ek9);
 		vector_ek10 = (ImageView) findViewById(R.id.vector_ek10);
-		_bg__restaurants_ek4 = (View) findViewById(R.id._bg__restaurants_ek4);
+
 		takeout = (TextView) findViewById(R.id.takeout);
 		_bg__shopping_bag_ek1 = (View) findViewById(R.id._bg__shopping_bag_ek1);
 		vector_ek11 = (ImageView) findViewById(R.id.vector_ek11);
@@ -159,6 +160,7 @@ public class homePage extends Activity {
 		_bg__more_ek1 = (View) findViewById(R.id.logout_btn);
 		vector_ek19 = (ImageView) findViewById(R.id.vector_ek19);
 		more_ek2 = (TextView) findViewById(R.id.more_ek2);
+		shopping = (View) findViewById(R.id.shopping);
 	
 		
 		// yujin's code
@@ -211,6 +213,35 @@ public class homePage extends Activity {
 				Intent intent = new Intent(homePage.this, postList_by_category.class);
 				String category = "Bars";
 				intent.putExtra("category", category);
+				startActivity(intent);
+			}
+		});
+
+		// handle onClick for myProfile
+		_bg__delivery_ek1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(homePage.this, profile_activity.class);
+				startActivity(intent);
+			}
+		});
+
+		// handle onClick for shopping
+		shopping.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(homePage.this, postList_by_category.class);
+				String category = "Shopping";
+				intent.putExtra("category", category);
+				startActivity(intent);
+			}
+		});
+
+		// handle onClick for new Post
+		_bg__reservations_ek1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(homePage.this, addPost.class);
 				startActivity(intent);
 			}
 		});

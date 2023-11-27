@@ -18,11 +18,18 @@
 package com.cs407.werate;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class profile_activity extends Activity {
@@ -37,7 +44,7 @@ public class profile_activity extends Activity {
 	private View _bg__gender_ek1;
 	private View rectangle_392;
 	private TextView gender_ek2;
-	private TextView male;
+	private TextView gender;
 	private View _bg__system_icon_24px_gender_ek1;
 	private View _bg__group_ek1;
 	private ImageView vector;
@@ -67,7 +74,7 @@ public class profile_activity extends Activity {
 	private View _bg__phone_number_ek1;
 	private View rectangle_392_ek3;
 	private TextView phone_number_ek2;
-	private TextView __307__555_0133;
+	private TextView user_phone_number;
 	private View _bg__system_icon_24px_phone_ek1;
 	private View _bg__group_ek7;
 	private ImageView vector_ek7;
@@ -102,16 +109,26 @@ public class profile_activity extends Activity {
 	private TextView _9_41;
 	private View _bg__ui___home_indicator_ek1;
 	private View home_indicator;
+	private Spinner spinner;
+	private SharedPreferences sharedPreferences;
+	private View changeName;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profile);
+		user_phone_number = findViewById(R.id.user_phone_number);
+		sharedPreferences = getSharedPreferences("user_number", Context.MODE_PRIVATE);
 
-		
+		String savedNumber = sharedPreferences.getString("savedNumber", ""); // "" is the default value
+		user_phone_number.setText(savedNumber);
 
-		_bg__profile_ek4 = (View) findViewById(R.id._bg__profile_ek4);
+		String user_gender = sharedPreferences.getString("user_gender", "");
+		gender = (TextView) findViewById(R.id.my_gender);
+		gender.setText(user_gender);
+
+
 		profile_picture = (ImageView) findViewById(R.id.profile_picture);
 		name = (TextView) findViewById(R.id.name);
 		username = (TextView) findViewById(R.id.username);
@@ -119,9 +136,9 @@ public class profile_activity extends Activity {
 		_bg__gender_ek1 = (View) findViewById(R.id._bg__gender_ek1);
 		rectangle_392 = (View) findViewById(R.id.rectangle_392);
 		gender_ek2 = (TextView) findViewById(R.id.gender_ek2);
-		male = (TextView) findViewById(R.id.male);
+
 		_bg__system_icon_24px_gender_ek1 = (View) findViewById(R.id._bg__system_icon_24px_gender_ek1);
-		_bg__group_ek1 = (View) findViewById(R.id._bg__group_ek1);
+
 		vector = (ImageView) findViewById(R.id.vector);
 		vector_ek1 = (ImageView) findViewById(R.id.vector_ek1);
 		vector_ek2 = (ImageView) findViewById(R.id.vector_ek2);
@@ -131,24 +148,24 @@ public class profile_activity extends Activity {
 		rectangle_392_ek1 = (View) findViewById(R.id.rectangle_392_ek1);
 		birthday_ek2 = (TextView) findViewById(R.id.birthday_ek2);
 		_12_12_2000 = (TextView) findViewById(R.id._12_12_2000);
-		_bg__group_ek3 = (View) findViewById(R.id._bg__group_ek3);
+
 		vector_ek4 = (ImageView) findViewById(R.id.vector_ek4);
-		_bg__system_icon_24px_right_ek3 = (View) findViewById(R.id._bg__system_icon_24px_right_ek3);
+
 		_bg__email_ek1 = (View) findViewById(R.id._bg__email_ek1);
 		rectangle_392_ek2 = (View) findViewById(R.id.rectangle_392_ek2);
 		email_ek2 = (TextView) findViewById(R.id.email_ek2);
 		derlaxy_yahoo_com = (TextView) findViewById(R.id.derlaxy_yahoo_com);
 		_bg__group_ek5 = (View) findViewById(R.id._bg__group_ek5);
-		vector__stroke_ = (ImageView) findViewById(R.id.vector__stroke_);
+
 		vector__stroke__ek1 = (ImageView) findViewById(R.id.vector__stroke__ek1);
 		_bg__phone_number_ek1 = (View) findViewById(R.id._bg__phone_number_ek1);
 		rectangle_392_ek3 = (View) findViewById(R.id.rectangle_392_ek3);
 		phone_number_ek2 = (TextView) findViewById(R.id.phone_number_ek2);
-		__307__555_0133 = (TextView) findViewById(R.id.__307__555_0133);
+		user_phone_number = (TextView) findViewById(R.id.user_phone_number);
 		_bg__system_icon_24px_phone_ek1 = (View) findViewById(R.id._bg__system_icon_24px_phone_ek1);
-		_bg__group_ek7 = (View) findViewById(R.id._bg__group_ek7);
+
 		vector_ek7 = (ImageView) findViewById(R.id.vector_ek7);
-		vector_ek8 = (ImageView) findViewById(R.id.vector_ek8);
+		vector_ek8 = (ImageView) findViewById(R.id.profile_to_home);
 		_bg__change_password_ek1 = (View) findViewById(R.id._bg__change_password_ek1);
 		rectangle_392_ek4 = (View) findViewById(R.id.rectangle_392_ek4);
 		change_password_ek2 = (TextView) findViewById(R.id.change_password_ek2);
@@ -158,19 +175,81 @@ public class profile_activity extends Activity {
 		vector__stroke__ek2 = (ImageView) findViewById(R.id.vector__stroke__ek2);
 		vector__stroke__ek3 = (ImageView) findViewById(R.id.vector__stroke__ek3);
 		vector__stroke__ek4 = (ImageView) findViewById(R.id.vector__stroke__ek4);
-		_bg__header_ek1 = (View) findViewById(R.id._bg__header_ek1);
-		rectangle_406 = (View) findViewById(R.id.rectangle_406);
-		profile_ek5 = (TextView) findViewById(R.id.profile_ek5);
-		line_39 = (ImageView) findViewById(R.id.line_39);
-		_bg__system_icon_24px_left_ek1 = (View) findViewById(R.id._bg__system_icon_24px_left_ek1);
-		vector_ek11 = (ImageView) findViewById(R.id.vector_ek11);
-		_bg__ui___status_bars_ek1 = (View) findViewById(R.id._bg__ui___status_bars_ek1);
+		changeName = (View) findViewById(R.id.usernameFrame);
 
-	
-		
-		//custom code goes here
-	
+
+
+
+		spinner = findViewById(R.id.spinner);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+				R.array.gender_dropdown_items, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setAdapter(adapter);
+
+		String savedGender = sharedPreferences.getString("user_gender", "");
+		String first = sharedPreferences.getString("firstName", "Yujin");
+		String last = sharedPreferences.getString("lastName", "Wang");
+		name.setText(first + " " + last);
+
+		if (!savedGender.isEmpty()) {
+			int spinnerPosition = adapter.getPosition(savedGender);
+			spinner.setSelection(spinnerPosition);
+		}
+
+		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				String selectedItem = parent.getItemAtPosition(position).toString();
+				gender.setText(selectedItem);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// Another interface callback
+			}
+		});
+
+		vector_ek8.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String number_toSave = user_phone_number.getText().toString();
+				SharedPreferences.Editor editor = sharedPreferences.edit();
+				editor.putString("savedNumber", number_toSave);
+
+
+				String gender_toSave = gender.getText().toString();
+				SharedPreferences.Editor editor2 = sharedPreferences.edit();
+				editor2.putString("user_gender", gender_toSave);
+
+				editor.apply();
+				editor2.apply();
+				finish();
+			}
+		});
+
+		changeName.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(profile_activity.this, change_name_activity.class);
+				intent.putExtra("pass_first", name.getText().toString().split(" ")[0]);
+				intent.putExtra("pass_last", name.getText().toString().split(" ")[1]);
+
+				startActivity(intent);
+			}
+		});
 	}
+
+	@Override
+	protected void onResume(){
+		super.onResume();
+
+		String first = sharedPreferences.getString("firstName", "Yujin");
+		String last = sharedPreferences.getString("lastName", "Wang");
+		name.setText(first + " " + last);
+
+	}
+
+
 }
 	
 	

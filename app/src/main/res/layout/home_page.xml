@@ -228,11 +228,8 @@
 						android:layout_height="wrap_content"
 						>
 
-						<View   android:id="@+id/_bg__delivery_ek1"
-							android:background="@drawable/home_bg__delivery_ek1_shape"
-							 android:layout_marginStart="-43dp"
-							android:layout_marginTop="-131dp"
-							android:layout_width="50dp"
+						<View   android:id="@+id/myProfile"
+							android:layout_width="60dp"
 							android:layout_height="58.48dp" />
 
 						<TextView android:id="@+id/delivery_ek2"
@@ -241,10 +238,10 @@
 							android:textSize="14sp"
 							android:textColor="@color/_bg__topbar_container_top_bar__ek1_color"
 							android:layout_marginLeft="-2dp"
-							android:layout_marginTop="37dp"
-							android:layout_width="56.4dp"
-							android:layout_height="25.4dp"
-							android:text="@string/delivery_ek2_string"
+							android:layout_marginTop="40dp"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="My Profile"
 							 />
 
 
@@ -262,37 +259,14 @@
 								android:layout_width="30dp"
 								android:layout_height="30dp" />
 
-							<ImageView android:id="@+id/vector_ek2"
-								android:src="@drawable/home_vector_ek2"
-								android:contentDescription="vector_ek2"
-								 android:layout_marginStart="-0.75dp"
-								android:layout_marginTop="1.75dp"
-								android:layout_width="20.75dp"
-								android:layout_height="18.25dp" />
+							<ImageView
+								android:layout_width="25dp"
+								android:layout_height="30dp"
+								android:src="@drawable/usericon"
+								android:layout_marginLeft="5dp"
+								android:scaleType="fitXY"
 
-							<ImageView android:id="@+id/vector_ek3"
-								android:src="@drawable/home_vector_ek3"
-								android:contentDescription="vector_ek3"
-								 android:layout_marginStart="18dp"
-								android:layout_marginTop="8dp"
-								android:layout_width="10.75dp"
-								android:layout_height="12dp" />
-
-							<ImageView android:id="@+id/vector_ek4"
-								android:src="@drawable/home_vector_ek4"
-								android:contentDescription="vector_ek4"
-								 android:layout_marginStart="1.75dp"
-								android:layout_marginTop="18dp"
-								android:layout_width="8.25dp"
-								android:layout_height="8.25dp" />
-
-							<ImageView android:id="@+id/vector_ek5"
-								android:src="@drawable/home_vector_ek5"
-								android:contentDescription="vector_ek5"
-								 android:layout_marginStart="18dp"
-								android:layout_marginTop="18dp"
-								android:layout_width="8.25dp"
-								android:layout_height="8.25dp" />
+								/>
 
 						</RelativeLayout>
 
@@ -386,26 +360,33 @@
 
 					<RelativeLayout android:id="@+id/restaurants_ek3"
 						android:layout_marginTop="131dp"
-						android:layout_marginStart="137.89dp"
+						android:layout_marginLeft="137dp"
+
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						>
 
-						<View   android:id="@+id/_bg__restaurants_ek4"
-							android:layout_width="47dp"
-							android:layout_height="58.47dp" />
+
 
 						<TextView android:id="@+id/takeout"
 							android:layout_gravity="center_horizontal|center"
 							android:gravity="center"
 							android:textSize="14sp"
 							android:textColor="@color/_bg__topbar_container_top_bar__ek1_color"
-							android:layout_marginLeft="-2dp"
+							android:layout_marginLeft="0dp"
 							android:layout_marginTop="37dp"
+							android:layout_marginStart="-2dp"
 							android:layout_width="wrap_content"
 							android:layout_height="25.4dp"
 							android:text="Shopping"
 							 />
+
+						<View   android:id="@+id/shopping"
+
+							android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="60dp"
+							android:layout_height="60dp" />
 
 
 						<RelativeLayout android:id="@+id/shopping_bag"
