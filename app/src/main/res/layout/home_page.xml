@@ -138,7 +138,7 @@
 						android:text="WeRate 🌟🌟🌟🌟🌟"
 						 />
 
-					<TextView android:id="@+id/logo"
+					<TextView android:id="@+id/greeting"
 						android:textSize="24sp"
 						android:textColor="@color/_bg__home_search_ek2_color"
 						android:layout_marginLeft="21dp"

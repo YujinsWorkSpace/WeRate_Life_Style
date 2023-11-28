@@ -64,16 +64,6 @@
                         android:contentDescription="rectangle_17"
                         android:src="@drawable/rectangle_17" />
 
-                    <!--					<ImageView-->
-                    <!--						android:id="@+id/rectangle_18"-->
-                    <!--						android:layout_width="402dp"-->
-                    <!--						android:layout_height="40dp"-->
-                    <!--						android:layout_marginStart="7dp"-->
-                    <!--						android:layout_marginTop="700dp"-->
-                    <!--						android:contentDescription="rectangle_18"-->
-                    <!--						android:src="@drawable/rectangle_18" />-->
-
-
                     <RelativeLayout
                         android:id="@+id/group_15"
 
@@ -170,17 +160,6 @@
 
 
 
-
-                    <TextView
-                        android:id="@+id/forget_password"
-                        android:layout_width="122.4dp"
-                        android:layout_height="20.4dp"
-                        android:layout_marginLeft="253dp"
-                        android:layout_marginTop="558dp"
-                        android:text="@string/forget_password_string"
-                        android:textColor="@color/rectangle_5_color"
-                        android:textSize="14sp"
-                        />
 
 
 
@@ -305,15 +284,6 @@
                                 android:contentDescription="vector_ek3"
                                 android:src="@drawable/vector_ek3" />
 
-                            <!--							<ImageView-->
-                            <!--								android:id="@+id/vector_ek4"-->
-                            <!--								android:layout_width="39dp"-->
-                            <!--								android:layout_height="39dp"-->
-                            <!--								android:layout_marginStart="0dp"-->
-                            <!--								android:layout_marginTop="0dp"-->
-                            <!--								android:contentDescription="vector_ek4"-->
-                            <!--								android:src="@drawable/vector_ek4" />-->
-
                         </RelativeLayout>
 
 
@@ -366,14 +336,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dp"
                                     android:layout_marginTop="9dp">
-
-                                    <!--									<View-->
-                                    <!--										android:id="@+id/_bg__group_ek5"-->
-                                    <!--										android:layout_width="18.84dp"-->
-                                    <!--										android:layout_height="24.22dp"-->
-                                    <!--										android:layout_marginStart="-10dp"-->
-                                    <!--										android:layout_marginTop="-9dp"-->
-                                    <!--										android:background="@drawable/_bg__group_ek5_shape" />-->
 
                                     <ImageView
                                         android:id="@+id/vector_ek6"
@@ -440,14 +402,6 @@
                                     android:layout_marginStart="9dp"
                                     android:layout_marginTop="8dp">
 
-                                    <!--									<View-->
-                                    <!--										android:id="@+id/_bg__group_ek9"-->
-                                    <!--										android:layout_width="21.74dp"-->
-                                    <!--										android:layout_height="20.78dp"-->
-                                    <!--										android:layout_marginStart="-9dp"-->
-                                    <!--										android:layout_marginTop="-8dp"-->
-                                    <!--										android:background="@drawable/_bg__group_ek9_shape" />-->
-
                                     <ImageView
                                         android:id="@+id/vector_ek8"
                                         android:layout_width="21.74dp"
@@ -491,13 +445,52 @@
 
                 </RelativeLayout>
 
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="216dp">
+
+            <View
+
+                android:layout_width="312dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                />
+
+            <View
+
+                android:layout_width="312dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="-1dp"
+                android:layout_marginTop="-1dp"
+                android:background="@drawable/rectangle_16_shape" />
+
+            <EditText
+                android:id="@+id/full_name"
+                android:layout_width="107.5dp"
+                android:layout_height="21.5dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="12dp"
+                android:hint="Full Name"
+                android:textColor="@color/name_color"
+                android:textSize="15sp"
+                android:background="@null"
+                android:inputType="textPersonName"
+                />
+
+
+        </RelativeLayout>
+
 
                 <RelativeLayout
                     android:id="@+id/frame_451"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="53dp"
-                    android:layout_marginTop="216dp">
+                    android:layout_marginTop="280dp">
 
                     <View
                         android:id="@+id/_bg__frame_451_ek1"
@@ -528,17 +521,7 @@
                         android:inputType="textEmailAddress"
                         />
 
-                    <Button
-                        android:id="@+id/vector_ek15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="230dp"
-                        android:contentDescription="vector_ek15"
-                        android:background="@color/browser_actions_bg_grey"
-                        android:text="Verify"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        />
+
 
 
 
@@ -556,7 +539,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="53dp"
-                    android:layout_marginTop="285dp">
+                    android:layout_marginTop="350dp">
 
                     <View
                         android:id="@+id/_bg__frame_452_ek1"
@@ -595,7 +578,7 @@
 
                         <View
 
-                            android:layout_width="312dp"
+                            android:layout_width="130dp"
                             android:layout_height="47dp"
                             android:layout_marginStart="0dp"
                             android:layout_marginTop="0dp"
@@ -603,7 +586,7 @@
 
                         <View
 
-                            android:layout_width="312dp"
+                            android:layout_width="130dp"
                             android:layout_height="47dp"
                             android:layout_marginStart="-1dp"
                             android:layout_marginTop="-1dp"
@@ -613,13 +596,25 @@
                             android:id="@+id/confirm_verification"
                             android:layout_width="wrap_content"
                             android:layout_height="48dp"
-                            android:layout_marginLeft="18dp"
+                            android:layout_marginLeft="15dp"
                             android:layout_marginTop="0dp"
-                            android:hint="Confirm Verification Code"
+                            android:hint="Confirm Code"
                             android:textColor="@color/email_address_color"
                             android:textSize="15sp"
                             android:inputType="textPassword"
                             android:background="@null"
+                            />
+
+                        <Button
+                            android:id="@+id/vector_ek15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="135dp"
+                            android:contentDescription="vector_ek15"
+                            android:background="@color/browser_actions_bg_grey"
+                            android:text="Get Code"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
                             />
                     </RelativeLayout>
 

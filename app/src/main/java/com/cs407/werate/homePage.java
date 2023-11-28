@@ -30,7 +30,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ImageView;
 
-public class homePage extends Activity {
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Locale;
+
+	public class homePage extends Activity {
 
 	
 	private View _bg__home_search_ek2;
@@ -43,7 +47,7 @@ public class homePage extends Activity {
 	private View rectangle_3;
 	private ImageView vector_ek1;
 	private TextView yalp;
-	private TextView logo;
+	private TextView greeting;
 	private View _bg____container__ek1;
 	private View _bg__restaurants_ek1;
 	private TextView restaurants_ek2;
@@ -113,7 +117,7 @@ public class homePage extends Activity {
 //		rectangle_3 = (View) findViewById(R.id.rectangle_3);
 		vector_ek1 = (ImageView) findViewById(R.id.home_vector_ek1);
 		yalp = (TextView) findViewById(R.id.yalp);
-		logo = (TextView) findViewById(R.id.logo);
+		greeting = (TextView) findViewById(R.id.greeting);
 //		_bg____container__ek1 = (View) findViewById(R.id._bg____container__ek1);
 		_bg__restaurants_ek1 = (View) findViewById(R.id._bg__restaurants_ek1);
 		restaurants_ek2 = (TextView) findViewById(R.id.restaurants_ek2);
@@ -164,6 +168,37 @@ public class homePage extends Activity {
 	
 		
 		// yujin's code
+		Intent intent = getIntent();
+		String user_full_name = intent.getStringExtra("full_name");
+		// get current time
+		LocalTime current = LocalTime.now();
+		// set noon time
+
+		LocalTime noon = LocalTime.of(12, 0);
+
+		// set evening time
+		LocalTime evening = LocalTime.of(18, 0);
+
+		if (!user_full_name.equals("")) {
+			if (current.isBefore(noon)) {
+				greeting.setText("Good morning, " + user_full_name.split(" ")[0] + "!");
+			} else if (current.isAfter(noon) && current.isBefore(evening)) {
+				greeting.setText("Good afternoon, " + user_full_name.split(" ")[0] + "!");
+			} else {
+				greeting.setText("Good evening, " + user_full_name.split(" ")[0] + ".");
+			}
+		}
+		else {
+			if (current.isBefore(noon)) {
+				greeting.setText("Good morning!");
+			} else if (current.isAfter(noon) && current.isBefore(evening)) {
+				greeting.setText("Good afternoon!");
+			} else {
+				greeting.setText("Good evening!");
+			}
+		}
+
+
 
 		// handle click on logout
 		_bg__more_ek1.setOnClickListener(new View.OnClickListener() {
