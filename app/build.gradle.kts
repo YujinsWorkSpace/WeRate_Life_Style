@@ -39,4 +39,10 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation("com.amplifyframework:core:2.14.5")
+    implementation("com.amplifyframework:aws-api:2.14.5")
+    implementation("com.amplifyframework:aws-datastore:2.14.5")
+    implementation("com.amplifyframework:aws-auth-cognito:2.14.5")
+
 }

@@ -1,26 +1,26 @@
 <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent" android:layout_height="wrap_content" >
-	<!-- 
+	<!--
 	/*
 	 *	This content is generated from the API File Info.
 	 *	(Alt+Shift+Ctrl+I).
 	 *
-	 *	@desc 		
+	 *	@desc
 	 *	@file 		frame_461
 	 *	@date 		Thursday 23rd of November 2023 06:50:56 AM
 	 *	@title 		Page 1
-	 *	@author 	
-	 *	@keywords 	
+	 *	@author
+	 *	@keywords
 	 *	@generator 	Export Kit v1.3.figma
 	 *
 	 */
 	-->
 	<ScrollView android:id="@+id/frame_461"
-		android:layout_width="wrap_content" 
+		android:layout_width="wrap_content"
 		android:layout_height="match_parent" >
 
-		<RelativeLayout android:id="@+id/content_container" 
-			android:layout_width="wrap_content" 
+		<RelativeLayout android:id="@+id/content_container"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" >
 
 
@@ -156,13 +156,6 @@
 							android:layout_marginTop="0dp"
 							android:background="@drawable/_bg__frame_453_ek1_shape" />
 
-<!--						<View-->
-<!--							android:id="@+id/rectangle_5_ek1"-->
-<!--							android:layout_width="151dp"-->
-<!--							android:layout_height="45dp"-->
-<!--							android:layout_marginStart="-1dp"-->
-<!--							android:layout_marginTop="-1dp"-->
-<!--							android:background="@drawable/rectangle_5_ek1_shape" />-->
 
 						<TextView
 							android:id="@+id/register"
