@@ -22,6 +22,7 @@
     import android.content.Intent;
     import android.content.SharedPreferences;
     import android.os.Bundle;
+    import android.text.InputType;
     import android.util.Log;
     import android.view.View;
     import android.widget.Button;
@@ -51,6 +52,7 @@
         private EditText code;
         private EditText full_name;
         private TextView login;
+        private View _bg__lock_ek1;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,7 @@
 
             code = (EditText) findViewById(R.id.confirm_verification);
             full_name = (EditText) findViewById(R.id.full_name);
+            _bg__lock_ek1 = (View) findViewById(R.id._bg__lock_ek1);
 
 
             // yujin's design flow goes below
@@ -157,6 +160,13 @@
                 private void onJoinSuccess(AuthSignUpResult authSignUpResult) {
 
                     Toast.makeText(getApplicationContext(), "An verification code has sent to your email!", Toast.LENGTH_LONG).show();
+                }
+            });
+
+            _bg__lock_ek1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    my_password.setInputType(InputType.TYPE_CLASS_TEXT);
                 }
             });
 

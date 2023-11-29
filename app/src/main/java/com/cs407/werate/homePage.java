@@ -18,17 +18,28 @@
 package com.cs407.werate;
 
 import android.annotation.SuppressLint;
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
+import com.amplifyframework.auth.cognito.result.HostedUIError;
+import com.amplifyframework.core.Amplify;
 
 import java.time.LocalTime;
 import java.util.Calendar;
@@ -96,6 +107,7 @@ import java.util.Locale;
 	private TextView more_ek2;
 	private SharedPreferences sharedPreferences;
 	private View shopping;
+	private static final int REQUEST_LOCATION_PERMISSION = 1;
 
 	@SuppressLint("MissingInflatedId")
 	@Override
@@ -103,6 +115,11 @@ import java.util.Locale;
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home_page);
+
+		if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
+		}
+
 
 		sharedPreferences = getSharedPreferences("loginStatus", Context.MODE_PRIVATE);
 
@@ -179,7 +196,7 @@ import java.util.Locale;
 		// set evening time
 		LocalTime evening = LocalTime.of(18, 0);
 
-		if (!user_full_name.equals("")) {
+		if (user_full_name != null) {
 			if (current.isBefore(noon)) {
 				greeting.setText("Good morning, " + user_full_name.split(" ")[0] + "!");
 			} else if (current.isAfter(noon) && current.isBefore(evening)) {
@@ -287,14 +304,30 @@ import java.util.Locale;
 
 
 	private void handleLogout() {
-		SharedPreferences.Editor editor = sharedPreferences.edit();
-		editor.putBoolean("isLoggedIn", false);
-		editor.apply();
 
-		Intent intent = new Intent(homePage.this, login.class);
-		startActivity(intent);
 
-		finish();
+		Amplify.Auth.signOut(signOutResult -> {
+			if (signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
+				// Sign Out completed fully and without errors.
+				Log.i("AuthQuickStart", "Signed out successfully");
+				SharedPreferences.Editor editor = sharedPreferences.edit();
+				editor.putBoolean("isLoggedIn", false);
+				editor.apply();
+
+				Intent intent = new Intent(homePage.this, login.class);
+				startActivity(intent);
+				finish();
+
+			} else if (signOutResult instanceof AWSCognitoAuthSignOutResult.PartialSignOut) {
+				AWSCognitoAuthSignOutResult.PartialSignOut partialSignOutResult =
+						(AWSCognitoAuthSignOutResult.PartialSignOut) signOutResult;
+				HostedUIError hostedUIError = partialSignOutResult.getHostedUIError();
+			}
+		});
+
+
+
+
 	}
 }
 	

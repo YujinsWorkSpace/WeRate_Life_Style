@@ -107,7 +107,12 @@ package com.cs407.werate;
 
 
             //custom code goes here
-
+            vector_ek2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
         }
     }
 	

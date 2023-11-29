@@ -15,6 +15,9 @@
       "auth": {
         "weratelifestyle553710f8": {},
         "weratelifestyle965b3899": {}
+      },
+      "api": {
+        "WeRateApi": {}
       }
     }
   }

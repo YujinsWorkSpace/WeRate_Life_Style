@@ -601,7 +601,7 @@
                             android:hint="Confirm Code"
                             android:textColor="@color/email_address_color"
                             android:textSize="15sp"
-                            android:inputType="textPassword"
+                            android:inputType="text"
                             android:background="@null"
                             />
 

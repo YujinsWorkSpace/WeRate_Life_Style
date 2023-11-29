@@ -1,0 +1,40 @@
+type Category @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Posts: [Post] @hasMany(indexName: "byCategory", fields: ["id"])
+}
+
+type Comment @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  content: String
+  likes: Int
+  postID: ID! @index(name: "byPost")
+  User: User @hasOne
+  users: [User] @manyToMany(relationName: "UserComment")
+}
+
+type Post @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Category: String!
+  Rating: Int!
+  ServiceWeb: AWSURL
+  ServiceNum: AWSPhone
+  Title: String!
+  Content: String!
+  postTime: AWSTime
+  userID: ID! @index(name: "byUser")
+  Comments: [Comment] @hasMany(indexName: "byPost", fields: ["id"])
+  categoryID: ID! @index(name: "byCategory")
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  FirstName: String!
+  LastName: String
+  Email: AWSEmail
+  password: String
+  phoneNumber: AWSPhone
+  Verified: Boolean
+  Posts: [Post] @hasMany(indexName: "byUser", fields: ["id"])
+  Comments: [Comment] @manyToMany(relationName: "UserComment")
+}
+ 
