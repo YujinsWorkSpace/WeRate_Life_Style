@@ -123,9 +123,8 @@
 
 				<EditText
 					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:hint="add a comment:"
-					/>
+					android:layout_height="48dp"
+					android:hint="add a comment:" />
 
 				<TextView
 					android:layout_width="match_parent"

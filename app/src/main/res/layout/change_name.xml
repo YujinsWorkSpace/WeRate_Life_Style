@@ -100,26 +100,35 @@
 						android:layout_height="wrap_content"
 						>
 
-						<View   android:id="@+id/_bg__first_name_form_ek1"
-							android:background="@drawable/name_bg__first_name_form_ek1_shape"
-							 android:layout_marginStart="-1dp"
-							android:layout_marginTop="-1dp"
+						<View
+							android:id="@+id/_bg__first_name_form_ek1"
 							android:layout_width="match_parent"
-							android:layout_height="48dp" />
+							android:layout_height="48dp"
+							android:layout_marginStart="-1dp"
+							android:layout_marginTop="-1dp"
+							android:background="@drawable/name_bg__first_name_form_ek1_shape" />
 
-						<EditText android:id="@+id/user_firstName"
-							android:textStyle="bold"
-							android:textSize="12sp"
-							android:textColor="@color/maximus_color"
+						<EditText
+							android:id="@+id/user_firstName"
+							android:layout_width="375dp"
+							android:layout_height="48dp"
 							android:layout_marginLeft="16dp"
 							android:layout_marginTop="13dp"
-							android:layout_width="match_parent"
-							android:layout_height="25.2dp"
 							android:background="@color/white"
+							android:textColor="@color/maximus_color"
+							android:textSize="12sp"
+							android:textStyle="bold"
+							android:hint="Enter your first name"
+							/>
 
-							 />
+
 
 					</RelativeLayout>
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:orientation="vertical"></LinearLayout>
 
 				</RelativeLayout>
 
@@ -158,16 +167,19 @@
 							android:layout_width="match_parent"
 							android:layout_height="48dp" />
 
-						<EditText android:id="@+id/user_lastName"
-							android:textStyle="bold"
-							android:textSize="12sp"
-							android:textColor="@color/maximus_color"
+						<EditText
+							android:id="@+id/user_lastName"
+							android:layout_width="match_parent"
+							android:layout_height="48dp"
 							android:layout_marginLeft="16dp"
 							android:layout_marginTop="13dp"
-							android:layout_width="match_parent"
-							android:layout_height="25.2dp"
 							android:background="@null"
-							 />
+							android:textColor="@color/maximus_color"
+							android:textSize="12sp"
+							android:textStyle="bold"
+							android:hint="Enter your last name"
+							/>
+
 
 					</RelativeLayout>
 
@@ -204,6 +216,12 @@
 						 />
 
 				</RelativeLayout>
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
 
 			</RelativeLayout>
 		</RelativeLayout>

@@ -453,20 +453,20 @@
 							android:text="@string/phone_number_ek2_string"
 							 />
 
-						<EditText android:id="@+id/user_phone_number"
+						<EditText
+							android:id="@+id/user_phone_number"
+							android:layout_width="wrap_content"
+							android:layout_height="48dp"
 							android:layout_gravity="center_vertical|end"
-							android:gravity="end"
-							android:textSize="12sp"
-							android:textColor="@color/username_color"
 							android:layout_marginLeft="255dp"
 							android:layout_marginTop="20dp"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
+							android:background="@null"
+							android:gravity="end"
+							android:hint="Edit number"
 							android:inputType="phone"
 							android:text=""
-							android:background="@null"
-							android:hint="Edit number"
-							 />
+							android:textColor="@color/username_color"
+							android:textSize="12sp" />
 
 
 						<RelativeLayout android:id="@+id/system_icon_24px_phone"

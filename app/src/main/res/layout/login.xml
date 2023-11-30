@@ -55,16 +55,7 @@
 						android:layout_marginTop="0dp"
 						android:background="@drawable/_bg__create_an_account_ek1_shape" />
 
-					<ImageView
-						android:id="@+id/rectangle_17"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginStart="8dp"
-						android:layout_marginTop="28dp"
-						android:contentDescription="rectangle_17"
-						android:src="@drawable/rectangle_17" />
-
-<!--					<ImageView-->
+					<!--					<ImageView-->
 <!--						android:id="@+id/rectangle_18"-->
 <!--						android:layout_width="402dp"-->
 <!--						android:layout_height="40dp"-->
@@ -73,6 +64,15 @@
 <!--						android:contentDescription="rectangle_18"-->
 <!--						android:src="@drawable/rectangle_18" />-->
 
+
+					<ImageView
+						android:id="@+id/rectangle_17"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="8dp"
+						android:layout_marginTop="28dp"
+						android:contentDescription="rectangle_17"
+						android:src="@drawable/rectangle_17" />
 
 					<RelativeLayout
 						android:id="@+id/group_15"
@@ -573,7 +573,7 @@
 						<View
 							android:id="@+id/rectangle_16"
 							android:layout_width="312dp"
-							android:layout_height="47dp"
+							android:layout_height="60dp"
 							android:layout_marginStart="-1dp"
 							android:layout_marginTop="-1dp"
 							android:background="@drawable/rectangle_16_shape" />
@@ -581,15 +581,14 @@
 						<EditText
 							android:id="@+id/email_address"
 							android:layout_width="107.5dp"
-							android:layout_height="21.5dp"
+							android:layout_height="48dp"
 							android:layout_marginLeft="17dp"
 							android:layout_marginTop="12dp"
-							android:hint="@string/email_address_string"
-							android:textColor="@color/email_address_color"
-							android:textSize="15sp"
 							android:background="@null"
+							android:hint="@string/email_address_string"
 							android:inputType="textEmailAddress"
-							/>
+							android:textColor="@color/email_address_color"
+							android:textSize="15sp" />
 
 
 						<RelativeLayout
@@ -648,7 +647,7 @@
 						<View
 							android:id="@+id/rectangle_16_ek1"
 							android:layout_width="312dp"
-							android:layout_height="47dp"
+							android:layout_height="60dp"
 							android:layout_marginStart="-1dp"
 							android:layout_marginTop="-1dp"
 							android:background="@drawable/rectangle_16_ek1_shape" />
@@ -656,15 +655,14 @@
 						<EditText
 							android:id="@+id/password"
 							android:layout_width="76.5dp"
-							android:layout_height="21.5dp"
+							android:layout_height="48dp"
 							android:layout_marginLeft="18dp"
 							android:layout_marginTop="12dp"
-							android:hint="@string/password_string"
-							android:textColor="@color/email_address_color"
-							android:textSize="15sp"
-							android:inputType="textPassword"
 							android:background="@null"
-							/>
+							android:hint="@string/password_string"
+							android:inputType="textPassword"
+							android:textColor="@color/email_address_color"
+							android:textSize="15sp" />
 
 
 						<RelativeLayout
