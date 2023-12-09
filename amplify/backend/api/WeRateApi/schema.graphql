@@ -36,5 +36,4 @@ type User @model @auth(rules: [{allow: public}]) {
   Verified: Boolean
   Posts: [Post] @hasMany(indexName: "byUser", fields: ["id"])
   Comments: [Comment] @manyToMany(relationName: "UserComment")
-}
- 
+} 

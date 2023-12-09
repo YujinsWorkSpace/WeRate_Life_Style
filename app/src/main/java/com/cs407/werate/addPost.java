@@ -18,10 +18,19 @@
 package com.cs407.werate;
 
     import android.app.Activity;
+    import android.content.Intent;
+    import android.content.pm.PackageManager;
+    import android.net.Uri;
     import android.os.Bundle;
+    import android.view.MenuItem;
     import android.view.View;
+    import android.widget.EditText;
     import android.widget.ImageView;
+    import android.widget.PopupMenu;
     import android.widget.TextView;
+
+    import androidx.core.app.ActivityCompat;
+    import androidx.core.content.ContextCompat;
 
     public class addPost extends Activity {
 
@@ -31,7 +40,7 @@ package com.cs407.werate;
         private TextView business_name;
         private View _bg__description_ek1;
         private View rectangle_217;
-        private TextView __description_component_input_textarea_;
+        private EditText __description_component_input_textarea_;
         private View _bg__pricerange_ek1;
         private View rectangle_217_ek1;
         private TextView __pricerange_component_input_text_;
@@ -61,6 +70,8 @@ package com.cs407.werate;
         private View rectangle_1;
         private TextView yalp;
         private ImageView vector_ek2;
+        private static final int PICK_IMAGE_REQUEST = 1;
+        private final String[] dropdownOptions = {"Restaurants", "Coffee & Tea", "Hairdressers", "Bars", "Shopping", "Other"};
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -74,7 +85,7 @@ package com.cs407.werate;
             business_name = (TextView) findViewById(R.id.business_name);
             _bg__description_ek1 = (View) findViewById(R.id._bg__description_ek1);
             rectangle_217 = (View) findViewById(R.id.rectangle_217);
-            __description_component_input_textarea_ = (TextView) findViewById(R.id.__description_component_input_textarea_);
+            __description_component_input_textarea_ = (EditText) findViewById(R.id.__description_component_input_textarea_);
 //            _bg__pricerange_ek1 = (View) findViewById(R.id._bg__pricerange_ek1);
 //            rectangle_217_ek1 = (View) findViewById(R.id.rectangle_217_ek1);
 //            __pricerange_component_input_text_ = (TextView) findViewById(R.id.__pricerange_component_input_text_);
@@ -84,7 +95,7 @@ package com.cs407.werate;
             _bg__group_ek1 = (View) findViewById(R.id._bg__group_ek1);
             vector = (ImageView) findViewById(R.id.vector);
             vector_ek1 = (ImageView) findViewById(R.id.vector_ek1);
-            _bg__name_ek1 = (View) findViewById(R.id._bg__name_ek1);
+
             rectangle_217_ek3 = (View) findViewById(R.id.rectangle_217_ek3);
             __name_component_input_text_ = (TextView) findViewById(R.id.__name_component_input_text_);
 //            _bg__phone_ek1 = (View) findViewById(R.id._bg__phone_ek1);
@@ -106,6 +117,8 @@ package com.cs407.werate;
             vector_ek2 = (ImageView) findViewById(R.id.vector_ek2);
 
 
+
+
             //custom code goes here
             vector_ek2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -113,7 +126,67 @@ package com.cs407.werate;
                     finish();
                 }
             });
+
+            // handle upload image
+            __image_component_input_image_.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   openImageChooser();
+                }
+            });
+
+            vector.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDropdownMenu(v);
+                }
+            });
+
+            vector_ek1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDropdownMenu(v);
+                }
+            });
         }
+
+        private void openImageChooser() {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        }
+
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+
+            if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+                Uri imageUri = data.getData();
+                // Use this image URI for your image view or further processing
+                __image_component_input_image_.setImageURI(imageUri);
+            }
+        }
+
+        private void showDropdownMenu(View anchor) {
+            PopupMenu popupMenu = new PopupMenu(this, anchor);
+            for (String option : dropdownOptions) {
+                popupMenu.getMenu().add(option);
+            }
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    // Replace the text of the EditText field with the selected option
+                    __category__component_input_select_restaurant_coffe_tea_hairdresser_bar_delivery_takeout_reservation_other_.setText(item.getTitle());
+                    return true;
+                }
+            });
+            popupMenu.show();
+        }
+
+
     }
+
+
 	
 	

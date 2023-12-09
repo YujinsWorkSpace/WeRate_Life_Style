@@ -151,8 +151,9 @@
                 }
 
                 private void onJoinError(AuthException e) {
+                    Log.i(e.getMessage(), "button_error");
 
-                    Log.i(e.toString(), e.toString());
+                    Log.i(e.getMessage(), e.getMessage());
 
                 }
 
