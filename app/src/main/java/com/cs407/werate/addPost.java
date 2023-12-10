@@ -39,6 +39,10 @@ package com.cs407.werate;
 
     import java.io.File;
     import java.io.FileNotFoundException;
+    import java.io.FileOutputStream;
+    import java.io.IOException;
+    import java.io.InputStream;
+    import java.io.OutputStream;
 
     public class addPost extends Activity {
 
@@ -245,14 +249,35 @@ package com.cs407.werate;
         private void uploadImageToS3(Uri imageUri) {
             String fileName = "yourUniqueFileName.jpg"; // Generate or get a unique file name
 
-            File imageFile = new File(imageUri.getPath());
-            Amplify.Storage.uploadFile(
-                    fileName,
-                    imageFile,
-                    result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
-                    storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
-            );
+            File imageFile = uriToFile(imageUri);
+            if (imageFile != null) {
+                Amplify.Storage.uploadFile(
+                        fileName,
+                        imageFile,
+                        result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
+                        storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
+                );
+            } else {
+                Log.e("MyAmplifyApp", "Failed to convert URI to file");
+            }
         }
+
+        private File uriToFile(Uri uri) {
+            File file = new File(getCacheDir(), "upload_" + System.currentTimeMillis());
+            try (InputStream in = getContentResolver().openInputStream(uri);
+                 OutputStream out = new FileOutputStream(file)) {
+                byte[] buffer = new byte[1024];
+                int length;
+                while ((in != null) && (length = in.read(buffer)) > 0) {
+                    out.write(buffer, 0, length);
+                }
+                return file;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
 
         private void showDropdownMenu(View anchor) {
             PopupMenu popupMenu = new PopupMenu(this, anchor);

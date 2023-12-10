@@ -1,5 +1,6 @@
 package com.amplifyframework.datastore.generated.model;
 
+import com.amplifyframework.core.model.annotations.BelongsTo;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.core.model.ModelIdentifier;
 
@@ -17,16 +18,18 @@ import com.amplifyframework.core.model.query.predicate.QueryField;
 
 import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
-/** This is an auto generated class representing the Message type in your schema. */
+/** This is an auto generated class representing the UserComment type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "Messages", type = Model.Type.USER, version = 1)
-public final class Message implements Model {
-  public static final QueryField ID = field("Message", "id");
-  public static final QueryField CONTENT = field("Message", "content");
-  public static final QueryField DATE = field("Message", "date");
+@ModelConfig(pluralName = "UserComments", type = Model.Type.USER, version = 1)
+@Index(name = "byComment", fields = {"commentId"})
+@Index(name = "byUser", fields = {"userId"})
+public final class UserComment implements Model {
+  public static final QueryField ID = field("UserComment", "id");
+  public static final QueryField COMMENT = field("UserComment", "commentId");
+  public static final QueryField USER = field("UserComment", "userId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="String") String content;
-  private final @ModelField(targetType="AWSDateTime") Temporal.DateTime date;
+  private final @ModelField(targetType="Comment", isRequired = true) @BelongsTo(targetName = "commentId", targetNames = {"commentId"}, type = Comment.class) Comment comment;
+  private final @ModelField(targetType="User", isRequired = true) @BelongsTo(targetName = "userId", targetNames = {"userId"}, type = User.class) User user;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   /** @deprecated This API is internal to Amplify and should not be used. */
@@ -39,12 +42,12 @@ public final class Message implements Model {
       return id;
   }
   
-  public String getContent() {
-      return content;
+  public Comment getComment() {
+      return comment;
   }
   
-  public Temporal.DateTime getDate() {
-      return date;
+  public User getUser() {
+      return user;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -55,10 +58,10 @@ public final class Message implements Model {
       return updatedAt;
   }
   
-  private Message(String id, String content, Temporal.DateTime date) {
+  private UserComment(String id, Comment comment, User user) {
     this.id = id;
-    this.content = content;
-    this.date = date;
+    this.comment = comment;
+    this.user = user;
   }
   
   @Override
@@ -68,12 +71,12 @@ public final class Message implements Model {
       } else if(obj == null || getClass() != obj.getClass()) {
         return false;
       } else {
-      Message message = (Message) obj;
-      return ObjectsCompat.equals(getId(), message.getId()) &&
-              ObjectsCompat.equals(getContent(), message.getContent()) &&
-              ObjectsCompat.equals(getDate(), message.getDate()) &&
-              ObjectsCompat.equals(getCreatedAt(), message.getCreatedAt()) &&
-              ObjectsCompat.equals(getUpdatedAt(), message.getUpdatedAt());
+      UserComment userComment = (UserComment) obj;
+      return ObjectsCompat.equals(getId(), userComment.getId()) &&
+              ObjectsCompat.equals(getComment(), userComment.getComment()) &&
+              ObjectsCompat.equals(getUser(), userComment.getUser()) &&
+              ObjectsCompat.equals(getCreatedAt(), userComment.getCreatedAt()) &&
+              ObjectsCompat.equals(getUpdatedAt(), userComment.getUpdatedAt());
       }
   }
   
@@ -81,8 +84,8 @@ public final class Message implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getContent())
-      .append(getDate())
+      .append(getComment())
+      .append(getUser())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -92,17 +95,17 @@ public final class Message implements Model {
   @Override
    public String toString() {
     return new StringBuilder()
-      .append("Message {")
+      .append("UserComment {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("content=" + String.valueOf(getContent()) + ", ")
-      .append("date=" + String.valueOf(getDate()) + ", ")
+      .append("comment=" + String.valueOf(getComment()) + ", ")
+      .append("user=" + String.valueOf(getUser()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
       .toString();
   }
   
-  public static BuildStep builder() {
+  public static CommentStep builder() {
       return new Builder();
   }
   
@@ -114,8 +117,8 @@ public final class Message implements Model {
    * @param id the id of the existing item this instance will represent
    * @return an instance of this model with only ID populated
    */
-  public static Message justId(String id) {
-    return new Message(
+  public static UserComment justId(String id) {
+    return new UserComment(
       id,
       null,
       null
@@ -124,40 +127,50 @@ public final class Message implements Model {
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      content,
-      date);
+      comment,
+      user);
   }
-  public interface BuildStep {
-    Message build();
-    BuildStep id(String id);
-    BuildStep content(String content);
-    BuildStep date(Temporal.DateTime date);
+  public interface CommentStep {
+    UserStep comment(Comment comment);
   }
   
 
-  public static class Builder implements BuildStep {
+  public interface UserStep {
+    BuildStep user(User user);
+  }
+  
+
+  public interface BuildStep {
+    UserComment build();
+    BuildStep id(String id);
+  }
+  
+
+  public static class Builder implements CommentStep, UserStep, BuildStep {
     private String id;
-    private String content;
-    private Temporal.DateTime date;
+    private Comment comment;
+    private User user;
     @Override
-     public Message build() {
+     public UserComment build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
-        return new Message(
+        return new UserComment(
           id,
-          content,
-          date);
+          comment,
+          user);
     }
     
     @Override
-     public BuildStep content(String content) {
-        this.content = content;
+     public UserStep comment(Comment comment) {
+        Objects.requireNonNull(comment);
+        this.comment = comment;
         return this;
     }
     
     @Override
-     public BuildStep date(Temporal.DateTime date) {
-        this.date = date;
+     public BuildStep user(User user) {
+        Objects.requireNonNull(user);
+        this.user = user;
         return this;
     }
     
@@ -173,27 +186,27 @@ public final class Message implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String content, Temporal.DateTime date) {
+    private CopyOfBuilder(String id, Comment comment, User user) {
       super.id(id);
-      super.content(content)
-        .date(date);
+      super.comment(comment)
+        .user(user);
     }
     
     @Override
-     public CopyOfBuilder content(String content) {
-      return (CopyOfBuilder) super.content(content);
+     public CopyOfBuilder comment(Comment comment) {
+      return (CopyOfBuilder) super.comment(comment);
     }
     
     @Override
-     public CopyOfBuilder date(Temporal.DateTime date) {
-      return (CopyOfBuilder) super.date(date);
+     public CopyOfBuilder user(User user) {
+      return (CopyOfBuilder) super.user(user);
     }
   }
   
 
-  public static class MessageIdentifier extends ModelIdentifier<Message> {
+  public static class UserCommentIdentifier extends ModelIdentifier<UserComment> {
     private static final long serialVersionUID = 1L;
-    public MessageIdentifier(String id) {
+    public UserCommentIdentifier(String id) {
       super(id);
     }
   }

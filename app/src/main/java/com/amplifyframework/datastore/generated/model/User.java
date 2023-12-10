@@ -1,5 +1,6 @@
 package com.amplifyframework.datastore.generated.model;
 
+import com.amplifyframework.core.model.annotations.HasMany;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.core.model.ModelIdentifier;
 
@@ -23,13 +24,21 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 /** This is an auto generated class representing the User type in your schema. */
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "Users", type = Model.Type.USER, version = 1, authRules = {
-  @AuthRule(allow = AuthStrategy.OWNER, ownerField = "owner", identityClaim = "cognito:username", provider = "userPools", operations = { ModelOperation.CREATE, ModelOperation.DELETE, ModelOperation.UPDATE })
+  @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
 })
 public final class User implements Model {
   public static final QueryField ID = field("User", "id");
-  public static final QueryField NAME = field("User", "name");
+  public static final QueryField FIRST_NAME = field("User", "FirstName");
+  public static final QueryField LAST_NAME = field("User", "LastName");
+  public static final QueryField EMAIL = field("User", "Email");
+  public static final QueryField PASSWORD = field("User", "password");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="String") String name;
+  private final @ModelField(targetType="String", isRequired = true) String FirstName;
+  private final @ModelField(targetType="String") String LastName;
+  private final @ModelField(targetType="AWSEmail") String Email;
+  private final @ModelField(targetType="String") String password;
+  private final @ModelField(targetType="Post") @HasMany(associatedWith = "userID", type = Post.class) List<Post> Posts = null;
+  private final @ModelField(targetType="UserComment") @HasMany(associatedWith = "user", type = UserComment.class) List<UserComment> Comments = null;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   /** @deprecated This API is internal to Amplify and should not be used. */
@@ -42,8 +51,28 @@ public final class User implements Model {
       return id;
   }
   
-  public String getName() {
-      return name;
+  public String getFirstName() {
+      return FirstName;
+  }
+  
+  public String getLastName() {
+      return LastName;
+  }
+  
+  public String getEmail() {
+      return Email;
+  }
+  
+  public String getPassword() {
+      return password;
+  }
+  
+  public List<Post> getPosts() {
+      return Posts;
+  }
+  
+  public List<UserComment> getComments() {
+      return Comments;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -54,9 +83,12 @@ public final class User implements Model {
       return updatedAt;
   }
   
-  private User(String id, String name) {
+  private User(String id, String FirstName, String LastName, String Email, String password) {
     this.id = id;
-    this.name = name;
+    this.FirstName = FirstName;
+    this.LastName = LastName;
+    this.Email = Email;
+    this.password = password;
   }
   
   @Override
@@ -68,7 +100,10 @@ public final class User implements Model {
       } else {
       User user = (User) obj;
       return ObjectsCompat.equals(getId(), user.getId()) &&
-              ObjectsCompat.equals(getName(), user.getName()) &&
+              ObjectsCompat.equals(getFirstName(), user.getFirstName()) &&
+              ObjectsCompat.equals(getLastName(), user.getLastName()) &&
+              ObjectsCompat.equals(getEmail(), user.getEmail()) &&
+              ObjectsCompat.equals(getPassword(), user.getPassword()) &&
               ObjectsCompat.equals(getCreatedAt(), user.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), user.getUpdatedAt());
       }
@@ -78,7 +113,10 @@ public final class User implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getName())
+      .append(getFirstName())
+      .append(getLastName())
+      .append(getEmail())
+      .append(getPassword())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -90,14 +128,17 @@ public final class User implements Model {
     return new StringBuilder()
       .append("User {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("name=" + String.valueOf(getName()) + ", ")
+      .append("FirstName=" + String.valueOf(getFirstName()) + ", ")
+      .append("LastName=" + String.valueOf(getLastName()) + ", ")
+      .append("Email=" + String.valueOf(getEmail()) + ", ")
+      .append("password=" + String.valueOf(getPassword()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
       .toString();
   }
   
-  public static BuildStep builder() {
+  public static FirstNameStep builder() {
       return new Builder();
   }
   
@@ -112,36 +153,74 @@ public final class User implements Model {
   public static User justId(String id) {
     return new User(
       id,
+      null,
+      null,
+      null,
       null
     );
   }
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      name);
+      FirstName,
+      LastName,
+      Email,
+      password);
   }
-  public interface BuildStep {
-    User build();
-    BuildStep id(String id);
-    BuildStep name(String name);
+  public interface FirstNameStep {
+    BuildStep firstName(String firstName);
   }
   
 
-  public static class Builder implements BuildStep {
+  public interface BuildStep {
+    User build();
+    BuildStep id(String id);
+    BuildStep lastName(String lastName);
+    BuildStep email(String email);
+    BuildStep password(String password);
+  }
+  
+
+  public static class Builder implements FirstNameStep, BuildStep {
     private String id;
-    private String name;
+    private String FirstName;
+    private String LastName;
+    private String Email;
+    private String password;
     @Override
      public User build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
         return new User(
           id,
-          name);
+          FirstName,
+          LastName,
+          Email,
+          password);
     }
     
     @Override
-     public BuildStep name(String name) {
-        this.name = name;
+     public BuildStep firstName(String firstName) {
+        Objects.requireNonNull(firstName);
+        this.FirstName = firstName;
+        return this;
+    }
+    
+    @Override
+     public BuildStep lastName(String lastName) {
+        this.LastName = lastName;
+        return this;
+    }
+    
+    @Override
+     public BuildStep email(String email) {
+        this.Email = email;
+        return this;
+    }
+    
+    @Override
+     public BuildStep password(String password) {
+        this.password = password;
         return this;
     }
     
@@ -157,14 +236,32 @@ public final class User implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String name) {
+    private CopyOfBuilder(String id, String firstName, String lastName, String email, String password) {
       super.id(id);
-      super.name(name);
+      super.firstName(firstName)
+        .lastName(lastName)
+        .email(email)
+        .password(password);
     }
     
     @Override
-     public CopyOfBuilder name(String name) {
-      return (CopyOfBuilder) super.name(name);
+     public CopyOfBuilder firstName(String firstName) {
+      return (CopyOfBuilder) super.firstName(firstName);
+    }
+    
+    @Override
+     public CopyOfBuilder lastName(String lastName) {
+      return (CopyOfBuilder) super.lastName(lastName);
+    }
+    
+    @Override
+     public CopyOfBuilder email(String email) {
+      return (CopyOfBuilder) super.email(email);
+    }
+    
+    @Override
+     public CopyOfBuilder password(String password) {
+      return (CopyOfBuilder) super.password(password);
     }
   }
   

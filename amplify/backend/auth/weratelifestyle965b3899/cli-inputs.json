@@ -2,7 +2,7 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "weratelifestyle965b3899_identitypool_965b3899",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "werate965b3899",
     "userPoolName": "weratelifestyle965b3899_userpool_965b3899",
     "autoVerifiedAttributes": [
