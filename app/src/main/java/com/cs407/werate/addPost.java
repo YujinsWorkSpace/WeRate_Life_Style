@@ -20,8 +20,11 @@ package com.cs407.werate;
     import android.app.Activity;
     import android.content.Intent;
     import android.content.pm.PackageManager;
+    import android.graphics.Bitmap;
+    import android.graphics.BitmapFactory;
     import android.net.Uri;
     import android.os.Bundle;
+    import android.util.Log;
     import android.view.MenuItem;
     import android.view.View;
     import android.widget.EditText;
@@ -31,6 +34,11 @@ package com.cs407.werate;
 
     import androidx.core.app.ActivityCompat;
     import androidx.core.content.ContextCompat;
+
+    import com.amplifyframework.core.Amplify;
+
+    import java.io.File;
+    import java.io.FileNotFoundException;
 
     public class addPost extends Activity {
 
@@ -72,6 +80,10 @@ package com.cs407.werate;
         private ImageView vector_ek2;
         private static final int PICK_IMAGE_REQUEST = 1;
         private final String[] dropdownOptions = {"Restaurants", "Coffee & Tea", "Hairdressers", "Bars", "Shopping", "Other"};
+        private final String[] dropdownOptionsRating = {"1", "1.5", "2", "2.5", "3", "3.5", "4", "4.5", "5"};
+        private ImageView vector_choose;
+        private ImageView vector_choose2;
+        private TextView textRating;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -115,6 +127,9 @@ package com.cs407.werate;
             rectangle_1 = (View) findViewById(R.id.rectangle_1);
             yalp = (TextView) findViewById(R.id.yalp);
             vector_ek2 = (ImageView) findViewById(R.id.vector_ek2);
+            vector_choose = findViewById(R.id.vector_choose);
+            vector_choose2 = findViewById(R.id.vector_choose2);
+            textRating = findViewById(R.id.textRating);
 
 
 
@@ -148,6 +163,20 @@ package com.cs407.werate;
                     showDropdownMenu(v);
                 }
             });
+
+            vector_choose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDropdownMenuRating(v);
+                }
+            });
+
+            vector_choose2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDropdownMenuRating(v);
+                }
+            });
         }
 
         private void openImageChooser() {
@@ -157,15 +186,72 @@ package com.cs407.werate;
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
         }
 
+        /**
+         *
+         * @param requestCode The integer request code originally supplied to
+         *                    startActivityForResult(), allowing you to identify who this
+         *                    result came from.
+         * @param resultCode The integer result code returned by the child activity
+         *                   through its setResult().
+         * @param data An Intent, which can return result data to the caller
+         *               (various data can be attached to Intent "extras").
+         *
+         */
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
 
             if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
                 Uri imageUri = data.getData();
-                // Use this image URI for your image view or further processing
-                __image_component_input_image_.setImageURI(imageUri);
+
+                try {
+                    Bitmap bitmap = decodeUriToBitmap(imageUri);
+                    __image_component_input_image_.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+
+//
+//                // Use this image URI for your image view or further processing
+//                __image_component_input_image_.setImageURI(imageUri);
+
+                uploadImageToS3(imageUri);
+            } else {
+                Log.i("MyAmplifyApp", "failed enter uploaded: ");
             }
+        }
+
+        private Bitmap decodeUriToBitmap(Uri selectedImage) throws FileNotFoundException {
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o);
+
+            // The new size we want to scale to
+            final int REQUIRED_SIZE = 140;
+
+            // Find the correct scale value. It should be a power of 2.
+            int scale = 1;
+            while (o.outWidth / scale / 2 >= REQUIRED_SIZE && o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                scale *= 2;
+            }
+
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            return BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o2);
+        }
+
+
+        private void uploadImageToS3(Uri imageUri) {
+            String fileName = "yourUniqueFileName.jpg"; // Generate or get a unique file name
+
+            File imageFile = new File(imageUri.getPath());
+            Amplify.Storage.uploadFile(
+                    fileName,
+                    imageFile,
+                    result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
+                    storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
+            );
         }
 
         private void showDropdownMenu(View anchor) {
@@ -184,7 +270,21 @@ package com.cs407.werate;
             popupMenu.show();
         }
 
-
+        private void showDropdownMenuRating(View anchor) {
+            PopupMenu popupMenu = new PopupMenu(this, anchor);
+            for (String option : dropdownOptionsRating) {
+                popupMenu.getMenu().add(option);
+            }
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    // Replace the text of the EditText field with the selected option
+                    textRating.setText(item.getTitle());
+                    return true;
+                }
+            });
+            popupMenu.show();
+        }
     }
 
 

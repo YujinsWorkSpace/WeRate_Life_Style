@@ -67,7 +67,7 @@
 
 
 					<RelativeLayout android:id="@+id/description"
-						android:layout_marginTop="578.55dp"
+						android:layout_marginTop="630.55dp"
 						android:layout_marginStart="27.82dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
@@ -232,9 +232,63 @@
 
 				</RelativeLayout>
 
+				<RelativeLayout android:id="@+id/rating"
+					android:layout_marginTop="520dp"
+					android:layout_marginStart="27.82dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					>
+
+					<View
+						android:id="@+id/rectangle_217_ek100"
+						android:layout_width="355dp"
+						android:layout_height="47dp"
+						android:layout_marginStart="0dp"
+						android:layout_marginTop="0dp"
+						android:background="@drawable/post_rectangle_217_ek2_shape" />
+
+					<TextView android:id="@+id/textRating"
+						android:textSize="16sp"
+						android:textColor="@color/__description_component_input_textarea__color"
+						android:layout_marginLeft="25dp"
+						android:layout_marginTop="3dp"
+						android:layout_width="278.55dp"
+						android:layout_height="46.76dp"
+						android:hint="Rating"
+						android:background="@null"
+						/>
+
+
+					<RelativeLayout android:id="@+id/group_"
+						android:layout_marginTop="15dp"
+						android:layout_marginStart="333dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						>
+
+						<ImageView android:id="@+id/vector_choose"
+							android:src="@drawable/post_vector"
+							android:contentDescription="vector"
+							android:layout_marginStart="0dp"
+							android:layout_marginTop="14dp"
+							android:layout_width="8dp"
+							android:layout_height="3.17dp" />
+
+						<ImageView android:id="@+id/vector_choose2"
+							android:src="@drawable/post_vector_ek1"
+							android:contentDescription="vector_ek1"
+							android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="8dp"
+							android:layout_height="3.17dp" />
+
+					</RelativeLayout>
+
+				</RelativeLayout>
+
 
 				<RelativeLayout
-					android:layout_marginTop="520.01dp"
+					android:layout_marginTop="570.01dp"
 					android:layout_marginStart="27.82dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"

@@ -10,6 +10,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.generated.model.AmplifyModelProvider;
 import com.amplifyframework.datastore.generated.model.Todo;
+import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 
 public class AmplifyApp extends Application {
     @Override
@@ -21,7 +22,9 @@ public class AmplifyApp extends Application {
         Amplify.addPlugin(new AWSApiPlugin());
         Amplify.addPlugin(new AWSCognitoAuthPlugin());
         Amplify.addPlugin(new AWSDataStorePlugin());
+        Amplify.addPlugin(new AWSS3StoragePlugin());
         Amplify.configure(getApplicationContext());
+
 
         Log.i("amplify", "configured");
 

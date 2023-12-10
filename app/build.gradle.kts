@@ -44,6 +44,7 @@ dependencies {
     implementation("com.amplifyframework:aws-api:2.14.5")
     implementation("com.amplifyframework:aws-datastore:2.14.5")
     implementation("com.amplifyframework:aws-auth-cognito:2.14.5")
+    implementation("com.amplifyframework:aws-storage-s3:2.14.5")
 
     implementation("com.google.android.gms:play-services-location:21.0.1")
 }

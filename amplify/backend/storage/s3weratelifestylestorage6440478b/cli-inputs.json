@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3weratelifestylestorage6440478b",
+  "bucketName": "weratelifestyle-storage-6440478b",
+  "policyUUID": "3c4007e1",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

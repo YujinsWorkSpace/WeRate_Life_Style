@@ -18,6 +18,9 @@
       },
       "api": {
         "WeRateApi": {}
+      },
+      "storage": {
+        "s3weratelifestylestorage6440478b": {}
       }
     }
   }

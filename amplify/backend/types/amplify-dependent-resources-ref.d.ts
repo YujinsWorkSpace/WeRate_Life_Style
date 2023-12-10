@@ -16,5 +16,11 @@ export type AmplifyDependentResourcesAttributes = {
       "UserPoolId": "string",
       "UserPoolName": "string"
     }
+  },
+  "storage": {
+    "s3weratelifestylestorage6440478b": {
+      "BucketName": "string",
+      "Region": "string"
+    }
   }
 }

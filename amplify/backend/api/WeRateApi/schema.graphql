@@ -1,8 +1,3 @@
-type Category @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  Posts: [Post] @hasMany(indexName: "byCategory", fields: ["id"])
-}
-
 type Comment @model @auth(rules: [{allow: public}]) {
   id: ID!
   content: String
@@ -14,16 +9,15 @@ type Comment @model @auth(rules: [{allow: public}]) {
 
 type Post @model @auth(rules: [{allow: public}]) {
   id: ID!
-  Category: String!
-  Rating: Int!
-  ServiceWeb: AWSURL
-  ServiceNum: AWSPhone
   Title: String!
+  Category: String!
+  ServiceName: String
+  Rating: Float!
+  ZipCode: Int
   Content: String!
-  postTime: AWSTime
-  userID: ID! @index(name: "byUser")
   Comments: [Comment] @hasMany(indexName: "byPost", fields: ["id"])
-  categoryID: ID! @index(name: "byCategory")
+  postTime: AWSDateTime
+  userID: ID! @index(name: "byUser")
 }
 
 type User @model @auth(rules: [{allow: public}]) {
@@ -32,8 +26,7 @@ type User @model @auth(rules: [{allow: public}]) {
   LastName: String
   Email: AWSEmail
   password: String
-  phoneNumber: AWSPhone
-  Verified: Boolean
   Posts: [Post] @hasMany(indexName: "byUser", fields: ["id"])
   Comments: [Comment] @manyToMany(relationName: "UserComment")
-} 
+}
+ 
