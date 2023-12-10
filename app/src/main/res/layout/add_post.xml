@@ -67,7 +67,7 @@
 
 
 					<RelativeLayout android:id="@+id/description"
-						android:layout_marginTop="630.55dp"
+						android:layout_marginTop="610.55dp"
 						android:layout_marginStart="27.82dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
 
 
 					<RelativeLayout android:id="@+id/category"
-						android:layout_marginTop="380.19dp"
+						android:layout_marginTop="370.19dp"
 						android:layout_marginStart="27.82dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
@@ -205,7 +205,7 @@
 					</RelativeLayout>
 
 				<RelativeLayout
-					android:layout_marginTop="450.01dp"
+					android:layout_marginTop="430.01dp"
 					android:layout_marginStart="27.82dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -220,6 +220,7 @@
 						android:layout_height="47.48dp" />
 
 					<EditText
+						android:id="@+id/serviceName"
 						android:textSize="16sp"
 						android:textColor="@color/__description_component_input_textarea__color"
 						android:layout_marginLeft="25dp"
@@ -233,7 +234,7 @@
 				</RelativeLayout>
 
 				<RelativeLayout android:id="@+id/rating"
-					android:layout_marginTop="520dp"
+					android:layout_marginTop="490dp"
 					android:layout_marginStart="27.82dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -288,7 +289,7 @@
 
 
 				<RelativeLayout
-					android:layout_marginTop="570.01dp"
+					android:layout_marginTop="550.01dp"
 					android:layout_marginStart="27.82dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -303,6 +304,7 @@
 						android:layout_height="47.48dp" />
 
 					<EditText
+						android:id="@+id/zipCode"
 						android:textSize="16sp"
 						android:textColor="@color/__description_component_input_textarea__color"
 						android:layout_marginLeft="25dp"

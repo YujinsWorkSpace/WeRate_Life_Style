@@ -31,11 +31,15 @@ package com.cs407.werate;
     import android.widget.ImageView;
     import android.widget.PopupMenu;
     import android.widget.TextView;
+    import android.widget.Toast;
 
     import androidx.core.app.ActivityCompat;
     import androidx.core.content.ContextCompat;
 
+    import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
     import com.amplifyframework.core.Amplify;
+    import com.amplifyframework.core.model.temporal.Temporal;
+    import com.amplifyframework.datastore.generated.model.Post;
 
     import java.io.File;
     import java.io.FileNotFoundException;
@@ -43,6 +47,9 @@ package com.cs407.werate;
     import java.io.IOException;
     import java.io.InputStream;
     import java.io.OutputStream;
+    import java.time.OffsetDateTime;
+    import java.time.format.DateTimeFormatter;
+    import java.util.Date;
 
     public class addPost extends Activity {
 
@@ -88,6 +95,8 @@ package com.cs407.werate;
         private ImageView vector_choose;
         private ImageView vector_choose2;
         private TextView textRating;
+        private EditText serviceName;
+        private EditText zipcode;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -134,6 +143,8 @@ package com.cs407.werate;
             vector_choose = findViewById(R.id.vector_choose);
             vector_choose2 = findViewById(R.id.vector_choose2);
             textRating = findViewById(R.id.textRating);
+            serviceName = (EditText) findViewById(R.id.serviceName);
+            zipcode = (EditText) findViewById(R.id.zipCode);
 
 
 
@@ -181,6 +192,110 @@ package com.cs407.werate;
                     showDropdownMenuRating(v);
                 }
             });
+
+            rectangle_218.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String title = __name_component_input_text_.getText().toString();
+                    String category = __category__component_input_select_restaurant_coffe_tea_hairdresser_bar_delivery_takeout_reservation_other_.getText().toString();
+                    String ServiceName = serviceName.getText().toString();
+
+                    double rating;
+                    int ZipCode;
+                    try {
+                        rating = Double.parseDouble(textRating.getText().toString());
+                        ZipCode = Integer.parseInt(zipcode.getText().toString());
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(getApplicationContext(), "Please enter valid numbers for rating and zip code", Toast.LENGTH_SHORT).show();
+                        return; // Stop further execution in case of parsing error
+                    }
+
+                    String content = __description_component_input_textarea_.getText().toString();
+
+                    if (title.isEmpty() || category.isEmpty() || ServiceName.isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "Please fill out title, category or service name", Toast.LENGTH_SHORT).show();
+                        return; // Stop further execution in case of missing fields
+                    }
+
+                    OffsetDateTime now = OffsetDateTime.now();
+                    String formattedDate = now.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+
+                    // Fetch user ID and create post
+                    Amplify.Auth.fetchAuthSession(
+                            result -> {
+                                AWSCognitoAuthSession cognitoAuthSession = (AWSCognitoAuthSession) result;
+                                if (!cognitoAuthSession.getIdentityIdResult().toString().equals("")) {
+                                    String userId = cognitoAuthSession.getIdentityIdResult().toString();
+                                    createPost(title, category, ServiceName, rating, content, userId, formattedDate, ZipCode);
+                                } else {
+                                    Log.e("AuthDemo", "User ID not available");
+                                    // Handle the scenario when user ID is not available
+                                    return;
+                                }
+                            },
+                            error -> Log.e("AuthDemo", error.toString())
+                    );
+
+                    Intent intent = new Intent(addPost.this, homePage.class);
+                    startActivity(intent);
+                }
+            });
+
+
+
+
+//            rectangle_218.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                    String title = __name_component_input_text_.getText().toString();
+//                    String category = __category__component_input_select_restaurant_coffe_tea_hairdresser_bar_delivery_takeout_reservation_other_.getText().toString();
+//                    String ServiceName = serviceName.getText().toString();
+//
+//                    double rating = Double.parseDouble(textRating.getText().toString());
+//                    int ZipCode = Integer.parseInt(zipcode.getText().toString());
+//
+//
+//                    String content = __description_component_input_textarea_.getText().toString();
+//
+//                    if (title.equals("") || category.equals("") || ServiceName.equals("")) {
+//                        Toast.makeText(getApplicationContext(), "Please fill out title, category or service name", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    OffsetDateTime now = OffsetDateTime.now();
+//                    String formattedDate = now.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+//
+//                    Post newPost = Post.builder()
+//                            .title(title)
+//                            .category(category)
+//                            .rating(rating)
+//                            .content(content)
+//                            .userId()
+//                            .serviceName(ServiceName)
+//                            .postTime(formattedDate)
+//                            .build();
+//                }
+//            });
+        }
+
+        private void createPost(String title, String category, String serviceName, double rating, String content, String userId, String postTime, int zip) {
+            Temporal.Date today = new Temporal.Date(new Date());
+            Post newPost = Post.builder()
+                    .title(title)
+                    .category(category)
+                    .rating(rating)
+                    .content(content)
+                    .userId(userId) // Set the userId here
+                    .serviceName(serviceName)
+                    .postTime(today)
+                    .zipCode(zip)
+                    .build();
+
+            // Save the newPost to the DataStore or backend
+            Amplify.DataStore.save(newPost,
+                    success -> Log.i("Save", "Post saved successfully"),
+                    error -> Log.e("Save", "Error saving post", error)
+            );
         }
 
         private void openImageChooser() {

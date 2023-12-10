@@ -37,8 +37,7 @@
     import com.amplifyframework.auth.options.AuthSignUpOptions;
     import com.amplifyframework.auth.result.AuthSignUpResult;
     import com.amplifyframework.core.Amplify;
-
-
+    import com.amplifyframework.datastore.generated.model.User;
 
 
     public class signup extends Activity {
@@ -119,6 +118,30 @@
                     // go to home page
                     Intent intent = new Intent(signup.this, homePage.class);
                     intent.putExtra("full_name", full_name.getText().toString());
+
+                    String user_email = my_email_address.getText().toString();
+                    String firstName = full_name.getText().toString().split(" ")[0];
+                    String lastName = "";
+                    String password = my_password.getText().toString();
+
+                    try {
+                        lastName = full_name.getText().toString().split(" ")[1];
+                    } catch (IndexOutOfBoundsException e) {
+
+                    }
+
+                    User newUser = User.builder()
+                            .firstName(firstName)
+                            .lastName(lastName)
+                            .email(user_email)
+                            .password(password)
+                            .build();
+
+                    Amplify.DataStore.save(newUser,
+                            success -> Log.i("Save", "User saved successfully"),
+                            error -> Log.e("Save", "Error saving user", error)
+                    );
+
                     startActivity(intent);
                 }
             });

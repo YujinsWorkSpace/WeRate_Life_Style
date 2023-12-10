@@ -45,7 +45,7 @@ public final class Post implements Model {
   private final @ModelField(targetType="Int") Integer ZipCode;
   private final @ModelField(targetType="String", isRequired = true) String Content;
   private final @ModelField(targetType="Comment") @HasMany(associatedWith = "postID", type = Comment.class) List<Comment> Comments = null;
-  private final @ModelField(targetType="AWSDateTime") Temporal.DateTime postTime;
+  private final @ModelField(targetType="AWSDate") Temporal.Date postTime;
   private final @ModelField(targetType="ID", isRequired = true) String userID;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
@@ -87,7 +87,7 @@ public final class Post implements Model {
       return Comments;
   }
   
-  public Temporal.DateTime getPostTime() {
+  public Temporal.Date getPostTime() {
       return postTime;
   }
   
@@ -103,7 +103,7 @@ public final class Post implements Model {
       return updatedAt;
   }
   
-  private Post(String id, String Title, String Category, String ServiceName, Double Rating, Integer ZipCode, String Content, Temporal.DateTime postTime, String userID) {
+  private Post(String id, String Title, String Category, String ServiceName, Double Rating, Integer ZipCode, String Content, Temporal.Date postTime, String userID) {
     this.id = id;
     this.Title = Title;
     this.Category = Category;
@@ -241,7 +241,7 @@ public final class Post implements Model {
     BuildStep id(String id);
     BuildStep serviceName(String serviceName);
     BuildStep zipCode(Integer zipCode);
-    BuildStep postTime(Temporal.DateTime postTime);
+    BuildStep postTime(Temporal.Date postTime);
   }
   
 
@@ -254,7 +254,7 @@ public final class Post implements Model {
     private String userID;
     private String ServiceName;
     private Integer ZipCode;
-    private Temporal.DateTime postTime;
+    private Temporal.Date postTime;
     @Override
      public Post build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -319,7 +319,7 @@ public final class Post implements Model {
     }
     
     @Override
-     public BuildStep postTime(Temporal.DateTime postTime) {
+     public BuildStep postTime(Temporal.Date postTime) {
         this.postTime = postTime;
         return this;
     }
@@ -336,7 +336,7 @@ public final class Post implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String title, String category, String serviceName, Double rating, Integer zipCode, String content, Temporal.DateTime postTime, String userId) {
+    private CopyOfBuilder(String id, String title, String category, String serviceName, Double rating, Integer zipCode, String content, Temporal.Date postTime, String userId) {
       super.id(id);
       super.title(title)
         .category(category)
@@ -384,7 +384,7 @@ public final class Post implements Model {
     }
     
     @Override
-     public CopyOfBuilder postTime(Temporal.DateTime postTime) {
+     public CopyOfBuilder postTime(Temporal.Date postTime) {
       return (CopyOfBuilder) super.postTime(postTime);
     }
   }
