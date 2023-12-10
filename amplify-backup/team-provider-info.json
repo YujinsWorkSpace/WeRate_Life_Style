@@ -1,0 +1,27 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-weratelifestyle-dev-145334-authRole",
+      "UnauthRoleArn": "arn:aws:iam::692945577238:role/amplify-weratelifestyle-dev-145334-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::692945577238:role/amplify-weratelifestyle-dev-145334-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-weratelifestyle-dev-145334-deployment",
+      "UnauthRoleName": "amplify-weratelifestyle-dev-145334-unauthRole",
+      "StackName": "amplify-weratelifestyle-dev-145334",
+      "StackId": "arn:aws:cloudformation:us-east-2:692945577238:stack/amplify-weratelifestyle-dev-145334/085c2af0-8d67-11ee-a741-0208b269120b",
+      "AmplifyAppId": "drr44cu9vcpig"
+    },
+    "categories": {
+      "auth": {
+        "weratelifestyle553710f8": {},
+        "weratelifestyle965b3899": {}
+      },
+      "api": {
+        "WeRateApi": {}
+      },
+      "storage": {
+        "s3weratelifestylestorage6440478b": {}
+      }
+    }
+  }
+}

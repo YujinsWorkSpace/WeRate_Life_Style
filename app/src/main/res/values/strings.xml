@@ -1,105 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<!-- frame_461 strings -->
+    <!-- frame_461 strings -->
 
-	<string name="app_name">Page 1</string>
-	<string name="ek_img_content">ExportKit Image</string>
-	<string name="or_connect_with_string">or connect with</string>
-	<string name="login_string">Login</string>
-	<string name="register_string">Register</string>
-	<string name="welcome_string">Welcome</string>
-	<string name="by_signing_in_you_are_agreeing_our_term_and_privacy_policy_string">By signing in you are agreeing our Term and privacy policy</string>
-	<string name="forget_password_string">Forget password</string>
-	<string name="remember_password_string">Remember password</string>
-	<string name="login_wit_touch_id_string">Login wit touch ID</string>
-	<string name="email_address_string">Email Address</string>
-	<string name="password_string">Password</string>
+    <string name="app_name">Page 1</string>
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="or_connect_with_string">or connect with</string>
+    <string name="login_string">Login</string>
+    <string name="register_string">Register</string>
+    <string name="welcome_string">Welcome</string>
+    <string name="by_signing_in_you_are_agreeing_our_term_and_privacy_policy_string">By signing in you are agreeing our Term and privacy policy</string>
+    <string name="forget_password_string">Forget password</string>
+    <string name="remember_password_string">Remember password</string>
+    <string name="login_wit_touch_id_string">Login wit touch ID</string>
+    <string name="email_address_string">Email Address</string>
+    <string name="password_string">Password</string>
 
-	<!-- home_search strings -->
+    <!-- home_search strings -->
 
-	<string name="search__component_input_text__string">Search</string>
-	<string name="yalp_string">Yalp</string>
-	<string name="logo_string">Looking for a place?</string>
-	<string name="restaurants_ek2_string">Restaurants</string>
-	<string name="delivery_ek2_string">Delivery</string>
-	<string name="coffee___tea_string">Coffee &amp; Tea</string>
-	<string name="takeout_string">Takeout</string>
-	<string name="hairdressers_ek2_string">Hairdressers</string>
-	<string name="reservations_ek2_string">Share Post</string>
-	<string name="bars_ek2_string">Bars</string>
-	<string name="more_ek2_string">More</string>
+    <string name="search__component_input_text__string">Search</string>
+    <string name="yalp_string">Yalp</string>
+    <string name="logo_string">Looking for a place?</string>
+    <string name="restaurants_ek2_string">Restaurants</string>
+    <string name="delivery_ek2_string">Delivery</string>
+    <string name="coffee___tea_string">Coffee &amp; Tea</string>
+    <string name="takeout_string">Takeout</string>
+    <string name="hairdressers_ek2_string">Hairdressers</string>
+    <string name="reservations_ek2_string">Share Post</string>
+    <string name="bars_ek2_string">Bars</string>
+    <string name="more_ek2_string">More</string>
 
-	<!-- add_a_business strings -->
-
-
-	<string name="business_name_string">Add a business</string>
-	<string name="__description_component_input_textarea__string">Description</string>
-	<string name="__pricerange_component_input_text__string">What is your average price?</string>
-	<string name="__category__component_input_select_restaurant_coffe_tea_hairdresser_bar_delivery_takeout_reservation_other__string">Category</string>
-	<string name="__name_component_input_text__string">Name of your business</string>
-	<string name="__phone_component_input_text__string">Phone</string>
-	<string name="__web_component_input_text__string">Website</string>
-	<string name="__email_component_input_email__string">Your e-mail address</string>
-	<string name="btntxt_string">Create listing</string>
-
-	<!-- businesslist_category strings -->
-
-	<string name="______string">$$$$</string>
-	<string name="number_of_reviews_string">Number of reviews</string>
-	<string name="category_string">Category</string>
-	<string name="address_string">Address</string>
-	<string name="_______string"></string>
-	<string name="category_name_string">Category name</string>
-	<string name="search_component_input_text__action_filter__string">Search</string>
-
-	<!-- businessdetail strings -->
+    <!-- add_a_business strings -->
 
 
-	<string name="write_message_string">Write message</string>
-	<string name="call_string">Call</string>
-	<string name="visit_website_string">Visit website</string>
-	<string name="reviews_string">Reviews</string>
-	<string name="review_text_flexo__string">Review text</string>
-	<string name="author_string">Author</string>
-	<string name="_______ek1_string"></string>
+    <string name="business_name_string">Add a business</string>
+    <string name="__description_component_input_textarea__string">Description</string>
+    <string name="__pricerange_component_input_text__string">What is your average price?</string>
+    <string name="__category__component_input_select_restaurant_coffe_tea_hairdresser_bar_delivery_takeout_reservation_other__string">Category</string>
+    <string name="__name_component_input_text__string">Name of your business</string>
+    <string name="__phone_component_input_text__string">Phone</string>
+    <string name="__web_component_input_text__string">Website</string>
+    <string name="__email_component_input_email__string">Your e-mail address</string>
+    <string name="btntxt_string">Create listing</string>
 
-	<!-- profile strings -->
+    <!-- businesslist_category strings -->
 
+    <string name="______string">$$$$</string>
+    <string name="number_of_reviews_string">Number of reviews</string>
+    <string name="category_string">Category</string>
+    <string name="address_string">Address</string>
+    <string name="_______string"></string>
+    <string name="category_name_string">Category name</string>
+    <string name="search_component_input_text__action_filter__string">Search</string>
 
-	<string name="name_string">Maximus Gold</string>
-	<string name="username_string">@derlaxy</string>
-	<string name="gender_ek2_string">Gender</string>
-	<string name="male_string">Male</string>
-	<string name="birthday_ek2_string">Birthday</string>
-	<string name="_12_12_2000_string">12-12-2000</string>
-	<string name="email_ek2_string">Email</string>
-	<string name="derlaxy_yahoo_com_string">Derlaxy@yahoo.com</string>
-	<string name="phone_number_ek2_string">Phone Number</string>
-	<string name="__307__555_0133_string">(307) 555-0133</string>
-	<string name="change_password_ek2_string">Change Password</string>
-	<string name="___________________string"></string>
-	<string name="profile_ek5_string">Profile</string>
-	<string name="_9_41_string">9:41</string>
-
-	<!-- change_name strings -->
-
-	<string name="first_name_ek2_string">First Name</string>
-	<string name="maximus_string">Maximus</string>
-	<string name="last_name_ek2_string">Last Name</string>
-	<string name="gold_string">Gold</string>
-	<string name="save_string">Save</string>
-
-	<!-- change_password strings -->
+    <!-- businessdetail strings -->
 
 
-	<string name="old_password_ek2_string">Old Password</string>
-	<string name="new_password_ek2_string">New Password</string>
-	<string name="___________________ek1_string"></string>
-	<string name="new_password_again_ek2_string">New Password Again</string>
-	<string name="___________________ek2_string"></string>
-	<string name="change_password_ek3_string">Change Password</string>
+    <string name="write_message_string">Write message</string>
+    <string name="call_string">Call</string>
+    <string name="visit_website_string">Visit website</string>
+    <string name="reviews_string">Reviews</string>
+    <string name="review_text_flexo__string">Review text</string>
+    <string name="author_string">Author</string>
+    <string name="_______ek1_string"></string>
+
+    <!-- profile strings -->
 
 
+    <string name="name_string">Maximus Gold</string>
+    <string name="username_string">@derlaxy</string>
+    <string name="gender_ek2_string">Gender</string>
+    <string name="male_string">Male</string>
+    <string name="birthday_ek2_string">Birthday</string>
+    <string name="_12_12_2000_string">12-12-2000</string>
+    <string name="email_ek2_string">Email</string>
+    <string name="derlaxy_yahoo_com_string">Derlaxy@yahoo.com</string>
+    <string name="phone_number_ek2_string">Phone Number</string>
+    <string name="__307__555_0133_string">(307) 555-0133</string>
+    <string name="change_password_ek2_string">Change Password</string>
+    <string name="___________________string"></string>
+    <string name="profile_ek5_string">Profile</string>
+    <string name="_9_41_string">9:41</string>
+
+    <!-- change_name strings -->
+
+    <string name="first_name_ek2_string">First Name</string>
+    <string name="maximus_string">Maximus</string>
+    <string name="last_name_ek2_string">Last Name</string>
+    <string name="gold_string">Gold</string>
+    <string name="save_string">Save</string>
+
+    <!-- change_password strings -->
+
+
+    <string name="old_password_ek2_string">Old Password</string>
+    <string name="new_password_ek2_string">New Password</string>
+    <string name="___________________ek1_string"></string>
+    <string name="new_password_again_ek2_string">New Password Again</string>
+    <string name="___________________ek2_string"></string>
+    <string name="change_password_ek3_string">Change Password</string>
 
 
 </resources>
