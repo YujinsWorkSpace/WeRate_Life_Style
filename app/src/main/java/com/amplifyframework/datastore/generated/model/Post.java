@@ -1,6 +1,5 @@
 package com.amplifyframework.datastore.generated.model;
 
-import com.amplifyframework.core.model.annotations.HasMany;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.core.model.ModelIdentifier;
 
@@ -35,8 +34,9 @@ public final class Post implements Model {
   public static final QueryField RATING = field("Post", "Rating");
   public static final QueryField ZIP_CODE = field("Post", "ZipCode");
   public static final QueryField CONTENT = field("Post", "Content");
-  public static final QueryField POST_TIME = field("Post", "postTime");
   public static final QueryField USER_ID = field("Post", "userID");
+  public static final QueryField POST_DATE = field("Post", "postDate");
+  public static final QueryField POST_IMG_URL = field("Post", "postImgUrl");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String Title;
   private final @ModelField(targetType="String", isRequired = true) String Category;
@@ -44,9 +44,9 @@ public final class Post implements Model {
   private final @ModelField(targetType="Float", isRequired = true) Double Rating;
   private final @ModelField(targetType="Int") Integer ZipCode;
   private final @ModelField(targetType="String", isRequired = true) String Content;
-  private final @ModelField(targetType="Comment") @HasMany(associatedWith = "postID", type = Comment.class) List<Comment> Comments = null;
-  private final @ModelField(targetType="AWSDate") Temporal.Date postTime;
   private final @ModelField(targetType="ID", isRequired = true) String userID;
+  private final @ModelField(targetType="AWSDate") Temporal.Date postDate;
+  private final @ModelField(targetType="AWSURL") String postImgUrl;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   /** @deprecated This API is internal to Amplify and should not be used. */
@@ -83,16 +83,16 @@ public final class Post implements Model {
       return Content;
   }
   
-  public List<Comment> getComments() {
-      return Comments;
-  }
-  
-  public Temporal.Date getPostTime() {
-      return postTime;
-  }
-  
   public String getUserId() {
       return userID;
+  }
+  
+  public Temporal.Date getPostDate() {
+      return postDate;
+  }
+  
+  public String getPostImgUrl() {
+      return postImgUrl;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -103,7 +103,7 @@ public final class Post implements Model {
       return updatedAt;
   }
   
-  private Post(String id, String Title, String Category, String ServiceName, Double Rating, Integer ZipCode, String Content, Temporal.Date postTime, String userID) {
+  private Post(String id, String Title, String Category, String ServiceName, Double Rating, Integer ZipCode, String Content, String userID, Temporal.Date postDate, String postImgUrl) {
     this.id = id;
     this.Title = Title;
     this.Category = Category;
@@ -111,8 +111,9 @@ public final class Post implements Model {
     this.Rating = Rating;
     this.ZipCode = ZipCode;
     this.Content = Content;
-    this.postTime = postTime;
     this.userID = userID;
+    this.postDate = postDate;
+    this.postImgUrl = postImgUrl;
   }
   
   @Override
@@ -130,8 +131,9 @@ public final class Post implements Model {
               ObjectsCompat.equals(getRating(), post.getRating()) &&
               ObjectsCompat.equals(getZipCode(), post.getZipCode()) &&
               ObjectsCompat.equals(getContent(), post.getContent()) &&
-              ObjectsCompat.equals(getPostTime(), post.getPostTime()) &&
               ObjectsCompat.equals(getUserId(), post.getUserId()) &&
+              ObjectsCompat.equals(getPostDate(), post.getPostDate()) &&
+              ObjectsCompat.equals(getPostImgUrl(), post.getPostImgUrl()) &&
               ObjectsCompat.equals(getCreatedAt(), post.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), post.getUpdatedAt());
       }
@@ -147,8 +149,9 @@ public final class Post implements Model {
       .append(getRating())
       .append(getZipCode())
       .append(getContent())
-      .append(getPostTime())
       .append(getUserId())
+      .append(getPostDate())
+      .append(getPostImgUrl())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -166,8 +169,9 @@ public final class Post implements Model {
       .append("Rating=" + String.valueOf(getRating()) + ", ")
       .append("ZipCode=" + String.valueOf(getZipCode()) + ", ")
       .append("Content=" + String.valueOf(getContent()) + ", ")
-      .append("postTime=" + String.valueOf(getPostTime()) + ", ")
       .append("userID=" + String.valueOf(getUserId()) + ", ")
+      .append("postDate=" + String.valueOf(getPostDate()) + ", ")
+      .append("postImgUrl=" + String.valueOf(getPostImgUrl()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -196,6 +200,7 @@ public final class Post implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -208,8 +213,9 @@ public final class Post implements Model {
       Rating,
       ZipCode,
       Content,
-      postTime,
-      userID);
+      userID,
+      postDate,
+      postImgUrl);
   }
   public interface TitleStep {
     CategoryStep title(String title);
@@ -241,7 +247,8 @@ public final class Post implements Model {
     BuildStep id(String id);
     BuildStep serviceName(String serviceName);
     BuildStep zipCode(Integer zipCode);
-    BuildStep postTime(Temporal.Date postTime);
+    BuildStep postDate(Temporal.Date postDate);
+    BuildStep postImgUrl(String postImgUrl);
   }
   
 
@@ -254,7 +261,8 @@ public final class Post implements Model {
     private String userID;
     private String ServiceName;
     private Integer ZipCode;
-    private Temporal.Date postTime;
+    private Temporal.Date postDate;
+    private String postImgUrl;
     @Override
      public Post build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -267,8 +275,9 @@ public final class Post implements Model {
           Rating,
           ZipCode,
           Content,
-          postTime,
-          userID);
+          userID,
+          postDate,
+          postImgUrl);
     }
     
     @Override
@@ -319,8 +328,14 @@ public final class Post implements Model {
     }
     
     @Override
-     public BuildStep postTime(Temporal.Date postTime) {
-        this.postTime = postTime;
+     public BuildStep postDate(Temporal.Date postDate) {
+        this.postDate = postDate;
+        return this;
+    }
+    
+    @Override
+     public BuildStep postImgUrl(String postImgUrl) {
+        this.postImgUrl = postImgUrl;
         return this;
     }
     
@@ -336,7 +351,7 @@ public final class Post implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String title, String category, String serviceName, Double rating, Integer zipCode, String content, Temporal.Date postTime, String userId) {
+    private CopyOfBuilder(String id, String title, String category, String serviceName, Double rating, Integer zipCode, String content, String userId, Temporal.Date postDate, String postImgUrl) {
       super.id(id);
       super.title(title)
         .category(category)
@@ -345,7 +360,8 @@ public final class Post implements Model {
         .userId(userId)
         .serviceName(serviceName)
         .zipCode(zipCode)
-        .postTime(postTime);
+        .postDate(postDate)
+        .postImgUrl(postImgUrl);
     }
     
     @Override
@@ -384,8 +400,13 @@ public final class Post implements Model {
     }
     
     @Override
-     public CopyOfBuilder postTime(Temporal.Date postTime) {
-      return (CopyOfBuilder) super.postTime(postTime);
+     public CopyOfBuilder postDate(Temporal.Date postDate) {
+      return (CopyOfBuilder) super.postDate(postDate);
+    }
+    
+    @Override
+     public CopyOfBuilder postImgUrl(String postImgUrl) {
+      return (CopyOfBuilder) super.postImgUrl(postImgUrl);
     }
   }
   

@@ -20,6 +20,7 @@ package com.cs407.werate;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 
@@ -34,13 +35,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.HttpMethod;
+import com.amazonaws.mobile.client.AWSMobileClient;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.Post;
+import com.bumptech.glide.Glide;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import aws.smithy.kotlin.runtime.SdkBaseException;
 
 	public class postList_by_category extends Activity {
 
@@ -94,9 +104,14 @@ import java.util.Locale;
 			holder.titleTextView.setText(post.getTitle());
 			holder.categoryTextView.setText(post.getCategory());
 			// Set other attributes of the post to the holder as needed
-			holder.rating.setText(String.format(Locale.getDefault(), "%.2f", post.getRating()));
-			holder.zipCode.setText(String.valueOf(post.getZipCode()));
+			holder.rating.setText("Rating: " + String.format(Locale.getDefault(), "%.2f", post.getRating()));
+			holder.zipCode.setText("Zip Code: " + String.valueOf(post.getZipCode()));
 			holder.serviceName.setText(post.getServiceName());
+			if (post.getPostImgUrl() != null && !post.getPostImgUrl().isEmpty()) {
+				Glide.with(holder.itemView.getContext())
+						.load(post.getPostImgUrl())
+						.into(holder.postImg);
+			}
 		}
 
 		@Override
@@ -110,6 +125,7 @@ import java.util.Locale;
 			TextView rating;
 			TextView zipCode;
 			TextView serviceName;
+			ImageView postImg;
 
 			// Define other views in the item layout
 
@@ -121,6 +137,7 @@ import java.util.Locale;
 				rating = itemView.findViewById(R.id.post_list_rating);
 				zipCode = itemView.findViewById(R.id.post_list_zipCode);
 				serviceName = itemView.findViewById(R.id.post_list_service_name);
+				postImg = itemView.findViewById(R.id.post_list_img);
 			}
 		}
 
@@ -168,14 +185,6 @@ import java.util.Locale;
 			}
 		});
 
-//		_bg____businessitem_container__ek1.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				Intent intent = new Intent(postList_by_category.this, postDetails.class);
-//				startActivity(intent);
-//			}
-//		});
-
 			postsRecyclerView = findViewById(R.id.postsRecyclerView);
 			postsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 			postsAdapter = new PostsAdapter(new ArrayList<>());
@@ -206,6 +215,35 @@ import java.util.Locale;
 				failure -> Log.e("CategoryPostsActivity", "Query failed", failure)
 		);
 	}
-}
+
+		private String generatePresignedUrl(String bucketName, String objectKey) {
+			try {
+				AmazonS3Client s3Client = new AmazonS3Client(AWSMobileClient.getInstance());
+				java.util.Date expiration = new java.util.Date();
+				long expTimeMillis = expiration.getTime();
+				expTimeMillis += 1000 * 60 * 60; // Add 1 hour.
+				expiration.setTime(expTimeMillis);
+
+				GeneratePresignedUrlRequest generatePresignedUrlRequest =
+						new GeneratePresignedUrlRequest(bucketName, objectKey)
+								.withMethod(HttpMethod.GET)
+								.withExpiration(expiration);
+				URL url = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
+
+				return url.toString();
+			} catch (AmazonServiceException e) {
+				// Handle AmazonServiceException, which means your request made it
+				// to AWS, but was rejected with an error response for some reason.
+				e.printStackTrace();
+			} catch (SdkBaseException e) {
+				// Handle SdkClientException, which means there was an error
+				// generating the pre-signed URL.
+				e.printStackTrace();
+			}
+
+			return null;
+		}
+
+	}
 	
 	

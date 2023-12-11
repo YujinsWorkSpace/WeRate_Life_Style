@@ -38,7 +38,6 @@ public final class User implements Model {
   private final @ModelField(targetType="AWSEmail") String Email;
   private final @ModelField(targetType="String") String password;
   private final @ModelField(targetType="Post") @HasMany(associatedWith = "userID", type = Post.class) List<Post> Posts = null;
-  private final @ModelField(targetType="UserComment") @HasMany(associatedWith = "user", type = UserComment.class) List<UserComment> Comments = null;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   /** @deprecated This API is internal to Amplify and should not be used. */
@@ -69,10 +68,6 @@ public final class User implements Model {
   
   public List<Post> getPosts() {
       return Posts;
-  }
-  
-  public List<UserComment> getComments() {
-      return Comments;
   }
   
   public Temporal.DateTime getCreatedAt() {

@@ -36,6 +36,11 @@ package com.cs407.werate;
     import androidx.core.app.ActivityCompat;
     import androidx.core.content.ContextCompat;
 
+    import com.amazonaws.AmazonServiceException;
+    import com.amazonaws.HttpMethod;
+    import com.amazonaws.mobile.client.AWSMobileClient;
+    import com.amazonaws.services.s3.AmazonS3Client;
+    import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
     import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
     import com.amplifyframework.core.Amplify;
     import com.amplifyframework.core.model.temporal.Temporal;
@@ -47,9 +52,13 @@ package com.cs407.werate;
     import java.io.IOException;
     import java.io.InputStream;
     import java.io.OutputStream;
+    import java.net.URL;
     import java.time.OffsetDateTime;
     import java.time.format.DateTimeFormatter;
     import java.util.Date;
+    import java.util.UUID;
+
+    import aws.smithy.kotlin.runtime.SdkBaseException;
 
     public class addPost extends Activity {
 
@@ -97,6 +106,14 @@ package com.cs407.werate;
         private TextView textRating;
         private EditText serviceName;
         private EditText zipcode;
+        private String imgUrl;
+        private static final String BUCKET_NAME = "weratelifestyle-storage-6440478b145334-dev";
+        private static final String REGION = "us-east-2";
+
+        public interface UrlCallback {
+            void onUrlReceived(String url);
+            void onError(Exception e);
+        }
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -123,15 +140,6 @@ package com.cs407.werate;
 
             rectangle_217_ek3 = (View) findViewById(R.id.rectangle_217_ek3);
             __name_component_input_text_ = (TextView) findViewById(R.id.__name_component_input_text_);
-//            _bg__phone_ek1 = (View) findViewById(R.id._bg__phone_ek1);
-//            rectangle_217_ek4 = (View) findViewById(R.id.rectangle_217_ek4);
-//            __phone_component_input_text_ = (TextView) findViewById(R.id.__phone_component_input_text_);
-//            _bg__web_ek1 = (View) findViewById(R.id._bg__web_ek1);
-//            rectangle_217_ek5 = (View) findViewById(R.id.rectangle_217_ek5);
-//            __web_component_input_text_ = (TextView) findViewById(R.id.__web_component_input_text_);
-//            _bg__email_ek1 = (View) findViewById(R.id._bg__email_ek1);
-//            rectangle_217_ek6 = (View) findViewById(R.id.rectangle_217_ek6);
-//            __email_component_input_email_ = (TextView) findViewById(R.id.__email_component_input_email_);
             _bg__submitbtn__action_submit__ek1 = (View) findViewById(R.id._bg__submitbtn__action_submit__ek1);
             rectangle_218 = (View) findViewById(R.id.rectangle_218);
             btntxt = (TextView) findViewById(R.id.btntxt);
@@ -240,42 +248,6 @@ package com.cs407.werate;
                     startActivity(intent);
                 }
             });
-
-
-
-
-//            rectangle_218.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                    String title = __name_component_input_text_.getText().toString();
-//                    String category = __category__component_input_select_restaurant_coffe_tea_hairdresser_bar_delivery_takeout_reservation_other_.getText().toString();
-//                    String ServiceName = serviceName.getText().toString();
-//
-//                    double rating = Double.parseDouble(textRating.getText().toString());
-//                    int ZipCode = Integer.parseInt(zipcode.getText().toString());
-//
-//
-//                    String content = __description_component_input_textarea_.getText().toString();
-//
-//                    if (title.equals("") || category.equals("") || ServiceName.equals("")) {
-//                        Toast.makeText(getApplicationContext(), "Please fill out title, category or service name", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    OffsetDateTime now = OffsetDateTime.now();
-//                    String formattedDate = now.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-//
-//                    Post newPost = Post.builder()
-//                            .title(title)
-//                            .category(category)
-//                            .rating(rating)
-//                            .content(content)
-//                            .userId()
-//                            .serviceName(ServiceName)
-//                            .postTime(formattedDate)
-//                            .build();
-//                }
-//            });
         }
 
         private void createPost(String title, String category, String serviceName, double rating, String content, String userId, String postTime, int zip) {
@@ -287,8 +259,9 @@ package com.cs407.werate;
                     .content(content)
                     .userId(userId) // Set the userId here
                     .serviceName(serviceName)
-                    .postTime(today)
+                    .postDate(today)
                     .zipCode(zip)
+                    .postImgUrl(imgUrl)
                     .build();
 
             // Save the newPost to the DataStore or backend
@@ -330,11 +303,6 @@ package com.cs407.werate;
                     e.printStackTrace();
                 }
 
-
-//
-//                // Use this image URI for your image view or further processing
-//                __image_component_input_image_.setImageURI(imageUri);
-
                 uploadImageToS3(imageUri);
             } else {
                 Log.i("MyAmplifyApp", "failed enter uploaded: ");
@@ -362,14 +330,29 @@ package com.cs407.werate;
 
 
         private void uploadImageToS3(Uri imageUri) {
-            String fileName = "yourUniqueFileName.jpg"; // Generate or get a unique file name
+            String fileName = "image_" + System.currentTimeMillis() + "_" + UUID.randomUUID().toString() + ".jpg"; // Generate or get a unique file name
 
             File imageFile = uriToFile(imageUri);
             if (imageFile != null) {
                 Amplify.Storage.uploadFile(
                         fileName,
                         imageFile,
-                        result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
+                        result -> {
+                            Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey());
+                            getUploadedFileUrl(result.getKey(), new UrlCallback() {
+                                @Override
+                                public void onUrlReceived(String url) {
+                                    String fileKey = url.substring(url.indexOf(BUCKET_NAME) + BUCKET_NAME.length() + 1);
+                                    imgUrl = generatePresignedUrl(BUCKET_NAME, fileKey);
+                                    Log.i("MyAmplifyApp", "Actual URL: " + imgUrl);
+                                }
+
+                                @Override
+                                public void onError(Exception e) {
+                                    Log.e("MyAmplifyApp", "Error in getting URL", e);
+                                }
+                            });
+                            },
                         storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
                 );
             } else {
@@ -391,6 +374,14 @@ package com.cs407.werate;
                 e.printStackTrace();
             }
             return null;
+        }
+
+        private void getUploadedFileUrl(String fileKey, UrlCallback callback) {
+            Amplify.Storage.getUrl(
+                    fileKey,
+                    result -> callback.onUrlReceived(result.getUrl().toString()),
+                    error -> callback.onError(error)
+            );
         }
 
 
@@ -424,6 +415,38 @@ package com.cs407.werate;
                 }
             });
             popupMenu.show();
+        }
+
+        private String getPublicFileUrl(String fileKey) {
+            return "https://" + BUCKET_NAME + ".s3." + REGION + ".amazonaws.com/" + fileKey;
+        }
+
+        private String generatePresignedUrl(String bucketName, String objectKey) {
+            try {
+                AmazonS3Client s3Client = new AmazonS3Client(AWSMobileClient.getInstance());
+                java.util.Date expiration = new java.util.Date();
+                long expTimeMillis = expiration.getTime();
+                expTimeMillis += 1000 * 60 * 60; // Add 1 hour.
+                expiration.setTime(expTimeMillis);
+
+                GeneratePresignedUrlRequest generatePresignedUrlRequest =
+                        new GeneratePresignedUrlRequest(bucketName, objectKey)
+                                .withMethod(HttpMethod.GET)
+                                .withExpiration(expiration);
+                URL url = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
+
+                return url.toString();
+            } catch (AmazonServiceException e) {
+                // Handle AmazonServiceException, which means your request made it
+                // to AWS, but was rejected with an error response for some reason.
+                e.printStackTrace();
+            } catch (SdkBaseException e) {
+                // Handle SdkClientException, which means there was an error
+                // generating the pre-signed URL.
+                e.printStackTrace();
+            }
+
+            return null;
         }
     }
 

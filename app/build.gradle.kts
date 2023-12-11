@@ -46,7 +46,12 @@ dependencies {
     implementation("com.amplifyframework:aws-datastore:2.14.5")
     implementation("com.amplifyframework:aws-auth-cognito:2.14.5")
     implementation("com.amplifyframework:aws-storage-s3:2.14.5")
+    implementation("com.amazonaws:aws-android-sdk-s3:2.73.0")
+    implementation("com.amazonaws:aws-android-sdk-mobile-client:2.73.0")
 
     implementation("com.google.android.gms:play-services-location:21.0.1")
+
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 }
 
