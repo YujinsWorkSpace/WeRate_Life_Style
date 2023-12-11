@@ -1,0 +1,104 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    			<RelativeLayout android:id="@+id/__businessitem_container_"
+    				android:layout_width="match_parent"
+    				android:layout_height="wrap_content"
+    				>
+
+    				<View   android:id="@+id/_bg____businessitem_container__ek1"
+    					 android:layout_marginStart="0dp"
+    					android:layout_marginTop="0dp"
+    					android:layout_width="414dp"
+    					android:layout_height="177dp"
+    					/>
+
+    				<ImageView android:id="@+id/post_list_img"
+    					android:src="@drawable/search_platter_gab742ad7c_1920_1"
+    					android:contentDescription="platter_gab742ad7c_1920_1"
+    					 android:layout_marginStart="18dp"
+    					android:layout_marginTop="17dp"
+    					android:layout_width="122dp"
+    					android:layout_height="122dp" />
+
+    				<TextView android:id="@+id/post_list_title"
+    					android:textStyle="bold"
+    					android:textSize="24sp"
+    					android:textColor="@color/_bg____businessitem_container__ek1_color"
+    					android:layout_marginLeft="155dp"
+    					android:layout_marginTop="13dp"
+    					android:layout_width="259.4dp"
+    					android:layout_height="63.4dp"
+    					android:text="Post Title"
+    					 />
+
+    				<TextView android:id="@+id/post_list_rating"
+    					android:textSize="16sp"
+    					android:textColor="@color/______color"
+    					android:layout_marginLeft="155.5dp"
+    					android:layout_marginTop="96dp"
+    					android:layout_width="wrap_content"
+    					android:layout_height="31.28dp"
+    					android:text="Rating: 4.5"
+    					 />
+
+    				<TextView android:id="@+id/post_list_service_name"
+    					android:layout_gravity="center_vertical|end"
+    					android:gravity="end"
+    					android:textSize="18sp"
+    					android:textColor="@color/______color"
+    					android:layout_alignParentRight="true"
+    					android:layout_marginRight="10dp"
+    					android:layout_marginTop="69.5dp"
+    					android:layout_width="wrap_content"
+    					android:layout_height="31.28dp"
+    					android:textStyle="bold"
+    					android:text="Taste of Sichuan"
+    					 />
+
+    				<TextView android:id="@+id/post_list_category"
+    					android:layout_gravity="center_vertical|end"
+    					android:gravity="end"
+    					android:textSize="16sp"
+    					android:textColor="@color/category_color"
+    					android:layout_marginLeft="254.7dp"
+    					android:layout_marginTop="96dp"
+    					android:layout_width="144dp"
+    					android:layout_height="31.28dp"
+    					android:text="Restaurant"
+    					 />
+
+    				<TextView android:id="@+id/post_list_zipCode"
+    					android:textSize="16sp"
+    					android:textColor="@color/______color"
+    					android:layout_marginLeft="155.5dp"
+    					android:layout_marginTop="122dp"
+    					android:layout_width="254.01dp"
+    					android:layout_height="45.36dp"
+    					android:text="Zip code: 53703"
+    					 />
+
+    				<TextView android:id="@+id/______"
+    					android:textSize="16sp"
+    					android:textColor="@color/_______color"
+    					android:layout_marginLeft="155.5dp"
+    					android:layout_marginTop="69.5dp"
+    					android:layout_width="116.8dp"
+    					android:layout_height="31.28dp"
+    					android:text="@string/_______string"
+    					 />
+
+    				<View   android:id="@+id/rectangle_214"
+    					android:background="@drawable/search_rectangle_214_shape"
+    					 android:layout_marginStart="18dp"
+    					android:layout_marginTop="171dp"
+    					android:layout_width="379dp"
+    					android:layout_height="3dp" />
+
+
+
+    			</RelativeLayout>
+
+</RelativeLayout>

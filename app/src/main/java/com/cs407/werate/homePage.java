@@ -241,7 +241,7 @@ import java.util.Locale;
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(homePage.this, postList_by_category.class);
-				String category = "Coffee";
+				String category = "Coffee & Tea";
 				intent.putExtra("category", category);
 				startActivity(intent);
 			}

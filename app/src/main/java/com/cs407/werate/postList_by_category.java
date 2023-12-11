@@ -17,16 +17,32 @@
 
 package com.cs407.werate;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class postList_by_category extends Activity {
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.model.query.Where;
+import com.amplifyframework.datastore.generated.model.Post;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+	public class postList_by_category extends Activity {
 
 	
 	private View _bg__businesslist_category;
@@ -49,8 +65,73 @@ public class postList_by_category extends Activity {
 	private View rectangle_2;
 	private TextView search_component_input_text__action_filter_;
 	private ImageView vector_ek1;
+	private RecyclerView postsRecyclerView;
+	private PostsAdapter postsAdapter;
+//	private TextView title;
+//	private TextView rating;
+//	private
 
-	@Override
+	public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostViewHolder> {
+		private List<Post> postsList;
+
+		public PostsAdapter(List<Post> postsList) {
+			this.postsList = postsList;
+		}
+
+		@NonNull
+		@Override
+		public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+			View view = LayoutInflater.from(parent.getContext())
+					.inflate(R.layout.post_list_layout, parent, false);
+			return new PostViewHolder(view);
+		}
+
+
+		@SuppressLint("SetTextI18n")
+		@Override
+		public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
+			Post post = postsList.get(position);
+			holder.titleTextView.setText(post.getTitle());
+			holder.categoryTextView.setText(post.getCategory());
+			// Set other attributes of the post to the holder as needed
+			holder.rating.setText(String.format(Locale.getDefault(), "%.2f", post.getRating()));
+			holder.zipCode.setText(String.valueOf(post.getZipCode()));
+			holder.serviceName.setText(post.getServiceName());
+		}
+
+		@Override
+		public int getItemCount() {
+			return postsList.size();
+		}
+
+		public class PostViewHolder extends RecyclerView.ViewHolder {
+			TextView titleTextView;
+			TextView categoryTextView;
+			TextView rating;
+			TextView zipCode;
+			TextView serviceName;
+
+			// Define other views in the item layout
+
+			public PostViewHolder(View itemView) {
+				super(itemView);
+				titleTextView = itemView.findViewById(R.id.post_list_title);
+				categoryTextView = itemView.findViewById(R.id.post_list_category);
+				// Initialize other views in the item layout
+				rating = itemView.findViewById(R.id.post_list_rating);
+				zipCode = itemView.findViewById(R.id.post_list_zipCode);
+				serviceName = itemView.findViewById(R.id.post_list_service_name);
+			}
+		}
+
+		// Method to update the data set and refresh the RecyclerView
+		public void setPostsList(List<Post> newPostsList) {
+			this.postsList = newPostsList;
+			notifyDataSetChanged(); // Refresh the RecyclerView
+		}
+	}
+
+		@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
@@ -58,25 +139,19 @@ public class postList_by_category extends Activity {
 
 		
 		_bg__businesslist_category = (View) findViewById(R.id._bg__businesslist_category);
-		_bg____businessitem_container__ek1 = (View) findViewById(R.id._bg____businessitem_container__ek1);
-		platter_gab742ad7c_1920_1 = (ImageView) findViewById(R.id.platter_gab742ad7c_1920_1);
-		business_name = (TextView) findViewById(R.id.business_name);
-		_____ = (TextView) findViewById(R.id._____);
-		number_of_reviews = (TextView) findViewById(R.id.number_of_reviews);
-		category = (TextView) findViewById(R.id.category);
-		address = (TextView) findViewById(R.id.address);
-		______ = (TextView) findViewById(R.id.______);
-		rectangle_214 = (View) findViewById(R.id.rectangle_214);
+
+
+
 		_bg__category__container__ek1 = (View) findViewById(R.id._bg__category__container__ek1);
 		category_name = (TextView) findViewById(R.id.category_name);
 		_bg__topbar_container_top_bar__ek1 = (View) findViewById(R.id._bg__topbar_container_top_bar__ek1);
 		rectangle_1 = (View) findViewById(R.id.rectangle_1);
 		yalp = (TextView) findViewById(R.id.yalp);
 		vector = (ImageView) findViewById(R.id.vector);
-		_bg__searchfield_ek1 = (View) findViewById(R.id._bg__searchfield_ek1);
+
 		rectangle_2 = (View) findViewById(R.id.rectangle_2);
 		search_component_input_text__action_filter_ = (TextView) findViewById(R.id.search_component_input_text__action_filter_);
-		vector_ek1 = (ImageView) findViewById(R.id.vector_ek1);
+
 	
 		
 		//yujin's code:
@@ -93,13 +168,43 @@ public class postList_by_category extends Activity {
 			}
 		});
 
-		_bg____businessitem_container__ek1.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(postList_by_category.this, postDetails.class);
-				startActivity(intent);
-			}
-		});
+//		_bg____businessitem_container__ek1.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				Intent intent = new Intent(postList_by_category.this, postDetails.class);
+//				startActivity(intent);
+//			}
+//		});
+
+			postsRecyclerView = findViewById(R.id.postsRecyclerView);
+			postsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+			postsAdapter = new PostsAdapter(new ArrayList<>());
+			postsRecyclerView.setAdapter(postsAdapter);
+
+
+			fetchAndDisplayPosts(textReceived);
+	}
+
+	private void fetchAndDisplayPosts(String category) {
+		Amplify.DataStore.query(
+				Post.class,
+				Where.matches(Post.CATEGORY.eq(category)),
+				posts -> {
+					// Assuming you have a RecyclerView to show your posts
+					List<Post> categoryPosts = new ArrayList<>();
+					while (posts.hasNext()) {
+						categoryPosts.add(posts.next());
+					}
+					runOnUiThread(() -> {
+						// Update your RecyclerView with the list of posts
+						// You'll need to implement a RecyclerView.Adapter to handle the display
+
+						postsAdapter.setPostsList(categoryPosts);
+
+					});
+				},
+				failure -> Log.e("CategoryPostsActivity", "Query failed", failure)
+		);
 	}
 }
 	
