@@ -125,5 +125,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // CRUD Operations for Category
 
+    public boolean addUser(String firstName, String lastName, String email, String password, String phoneNumber, boolean verified) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_USER_FIRST_NAME, firstName);
+        values.put(KEY_USER_LAST_NAME, lastName);
+        values.put(KEY_USER_EMAIL, email);
+        values.put(KEY_USER_PASSWORD, password);
+        values.put(KEY_USER_PHONE_NUMBER, phoneNumber);
+        values.put(KEY_USER_VERIFIED, verified);
+
+        long result = db.insert(TABLE_USER, null, values);
+        db.close();
+        return result != -1;
+    }
+    public Cursor getUser(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_USER, new String[] { KEY_USER_ID, KEY_USER_FIRST_NAME, KEY_USER_LAST_NAME, KEY_USER_EMAIL, KEY_USER_PHONE_NUMBER, KEY_USER_VERIFIED }, KEY_USER_ID + "=?", new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public int updateUser(int id, String firstName, String lastName, String email, String phoneNumber, boolean verified) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_USER_FIRST_NAME, firstName);
+        values.put(KEY_USER_LAST_NAME, lastName);
+        values.put(KEY_USER_EMAIL, email);
+        values.put(KEY_USER_PHONE_NUMBER, phoneNumber);
+        values.put(KEY_USER_VERIFIED, verified);
+
+        return db.update(TABLE_USER, values, KEY_USER_ID + " = ?", new String[] { String.valueOf(id) });
+    }
+    public void deleteUser(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_USER, KEY_USER_ID + " = ?", new String[] { String.valueOf(id) });
+        db.close();
+    }
+    public Cursor getAllUsers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + TABLE_USER;
+        return db.rawQuery(selectQuery, null);
+    }
 
 }
