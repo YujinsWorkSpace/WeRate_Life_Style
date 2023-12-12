@@ -15,6 +15,7 @@
 
 ## Introduction
 WeRate is an innovative application that offers personalized recommendations for services such as dining, entertainment, and relaxation, tailored to individual user preferences. Our goal is to enhance the decision-making process for both locals and tourists in any city.
+Here is the demo of the application on YouTube: https://www.youtube.com/watch?v=nIVyeu66-Ik
 
 ## Features
 - **Personalized Recommendations:** Leveraging AI to provide customized suggestions.
